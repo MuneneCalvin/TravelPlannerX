@@ -1,17 +1,30 @@
+import { useRef } from 'react';
+import ReactPlayer from 'react-player';
 import brazil from '../assets/featured-reo-de-janeiro-brazil.jpg';
 import australia from '../assets/featured-north-bondi-australia.jpg';
 import germany from '../assets/featured-berlin-germany.jpg';
 import thailand from '../assets/featured-khwaeng-wat-arun-thailand.jpg';
 import italy from '../assets/featured-rome-italy.jpg';
 import maldives from '../assets/featured-fuvahmulah-maldives.jpg';
+import video from '../assets/video-section.mp4';
 import '../App.css'
 
 function Home() {
+    const videoRef = useRef(null);
+
+    const handlePlayButtonClick = () => {
+        if (videoRef.current && videoRef.current.paused) {
+            videoRef.current.play();
+        } else if (videoRef.current) {
+        videoRef.current.pause();
+        }
+    };
+
     return (
         <main>
             <header className = "flex">
             <div className = "container">
-                <div className = "header2-title">
+                <div className = "header-title">
                     <h1>Leave Your Footprints</h1>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus rerum maxime enim odit illum in molestias beatae doloremque, ratione optio.</p>
                 </div>
@@ -26,6 +39,7 @@ function Home() {
                 </div>
             </div>
         </header>
+        
         {/* Featured */}
         <section id = "featured" className = "py-4">
             <div className = "container">
@@ -77,7 +91,7 @@ function Home() {
                     <div className = "featured-item my-2 shadow">
                         <img src = {thailand} alt = "featured place" />
                         <div className = "featured-item-content">
-                            <span>Name
+                            <span>
                                 <i className = "fas fa-map-marker-alt"></i>
                                 Khwaeng wat arun, thailand
                             </span>
@@ -159,9 +173,9 @@ function Home() {
         <section id = "video">
             <div className = "video-wrapper flex">
                 <video loop>
-                    <source src = "videos/video-section.mp4" type = "video/mp4" />
+                <ReactPlayer url={video} controls={true} />
                 </video>
-                <button type = "button" id = "play-btn">
+                <button type = "button" id = "play-btn" onClick={handlePlayButtonClick}>
                     <i className = "fas fa-play"></i>
                 </button>
             </div>
