@@ -1,42 +1,50 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.app {
   text-align: center;
+  margin-top: 50px;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+header {
+  margin-bottom: 30px;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+h1 {
+  font-size: 32px;
+  margin-bottom: 10px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+p {
+  font-size: 18px;
+  color: #666;
 }
 
-.card {
-  padding: 2em;
+.destinations {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-.read-the-docs {
-  color: #888;
+.destination-card {
+  width: 300px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  margin: 10px;
+  text-align: left;
+  background-color: #f7f7f7;
+}
+
+.destination-card h3 {
+  margin-top: 0;
+  font-size: 20px;
+  color: #333;
+}
+
+.destination-card p {
+  margin-bottom: 0;
+  color: #666;
 }
