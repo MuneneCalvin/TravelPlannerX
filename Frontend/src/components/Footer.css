@@ -1,7 +1,14 @@
+:root{
+    --green: #1ec6b6;
+    --light-grey: #f7f7f7;
+    --dark: #0e1010;
+    --trans: all 0.3s ease-in-out;
+}
 .footer{
+    margin-top: auto;
     width: 100%;
     padding: 50px 50px 0px;
-    background-color: #0a0a18;
+    background-color: var(--dark);
     min-height: 200px;
 }
 .footer .box{
@@ -80,7 +87,8 @@
 }
 .footer .newsletter .email button:hover{
     color: #0a0a18;
-    background-color: #fff;
+    background-color: #1ec6b6;
+    border-color: #1ec6b6;
 }
 .footer .copyrights{
     font-size: 18px;

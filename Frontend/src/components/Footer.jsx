@@ -6,7 +6,7 @@ function Footer() {
             <div className="box">
                 <div className="left">
                     <div className="categories">
-                        <p>Categories</p>
+                        <p>Popular places</p>
                     <div>
                         <p>Sports</p>
                     </div>
