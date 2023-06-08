@@ -28,7 +28,7 @@ function Header() {
                         <li><Link to="/technology" className = "nav-link">Technology</Link></li>
                     </li>
                     <li className = "nav-item">
-                        <a href = "contact.html" className = "nav-link">Contact</a>
+                        <Link to="/Contact" className = "nav-link">Contact</Link>
                     </li>
                 </ul>
             </div>

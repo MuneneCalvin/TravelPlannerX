@@ -22,7 +22,7 @@ function Home() {
 
     return (
         <main>
-            <header className = "flex">
+        <header className = "flex">
             <div className = "container">
                 <div className = "header-title">
                     <h1>Leave Your Footprints</h1>
