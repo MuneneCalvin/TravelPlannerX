@@ -3,11 +3,12 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 import './App.css'
 import Home from './pages/Home';
-import Sport from './pages/Sport';
-import Business from './pages/Business';
-import Technology from './pages/Technology';
+import Flights from './pages/Flights';
+import Cruises from './pages/Cruises';
+import Hotels from './pages/Hotels';
 import Contact from './pages/Contact';
 import About from './pages/About';
+import SignIn from './pages/SignIn';
 import Notfound from './pages/Notfound';
 
 function App() {
@@ -19,11 +20,12 @@ function App() {
 
             <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/Sport" element={<Sport />} />
-                <Route path="/Business" element={<Business />} />
-                <Route path="/About" element={<About />} />
-                <Route path="/Technology" element={<Technology />} />
+                <Route path="/Flights" element={<Flights />} />
+                <Route path="/Cruises" element={<Cruises />} />
+                <Route path="/Hotels" element={<Hotels />} />
                 <Route path="/Contact" element={<Contact />} />
+                <Route path="/SignIn" element={<SignIn />} />
+                <Route path="/About" element={<About />} />
                 <Route path='*' element={<Notfound />}/>
             </Routes>
 

@@ -19,16 +19,19 @@ function Header() {
                 <ul className = "navbar-nav">
                         <li><Link to="/" className = "nav-link">Home</Link></li>
                     <li className = "nav-item">
-                        <li><Link to="/sport" className = "nav-link">Sports</Link></li>
+                        <li><Link to="/Flights" className = "nav-link">Flights</Link></li>
                     </li>
                     <li className = "nav-item">
-                        <li><Link to="/business" className = "nav-link">Business</Link></li>
+                        <li><Link to="/Cruises" className = "nav-link">Cruises</Link></li>
                     </li>
                     <li className = "nav-item">
-                        <li><Link to="/technology" className = "nav-link">Technology</Link></li>
+                        <li><Link to="/Hotels" className = "nav-link">Hotels</Link></li>
                     </li>
                     <li className = "nav-item">
                         <Link to="/Contact" className = "nav-link">Contact</Link>
+                    </li>
+                    <li className = "nav-item">
+                        <Link to="/SignIn" className = "nav-link">Sign In</Link>
                     </li>
                 </ul>
             </div>
