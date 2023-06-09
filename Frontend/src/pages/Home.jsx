@@ -7,7 +7,7 @@ import thailand from '../assets/featured-khwaeng-wat-arun-thailand.jpg';
 import italy from '../assets/featured-rome-italy.jpg';
 import maldives from '../assets/featured-fuvahmulah-maldives.jpg';
 import video from '../assets/video-section.mp4';
-import '../App.css'
+import './Home.css'
 
 function Home() {
     // const videoRef = useRef(null);
