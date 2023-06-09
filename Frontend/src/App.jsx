@@ -7,6 +7,7 @@ import Sport from './pages/Sport';
 import Business from './pages/Business';
 import Technology from './pages/Technology';
 import Contact from './pages/Contact';
+import About from './pages/About';
 import Notfound from './pages/Notfound';
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/Sport" element={<Sport />} />
                 <Route path="/Business" element={<Business />} />
+                <Route path="/About" element={<About />} />
                 <Route path="/Technology" element={<Technology />} />
                 <Route path="/Contact" element={<Contact />} />
                 <Route path='*' element={<Notfound />}/>

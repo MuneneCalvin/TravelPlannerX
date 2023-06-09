@@ -297,6 +297,8 @@ header{
 
 /* video */
 .video-wrapper{
+    margin-top: 40px;
+    margin-bottom: 40px;
     height: 500px;
     position: relative;
 }
@@ -346,6 +348,7 @@ button, input[type = "submit"]{
 .container{
     max-width: 1320px;
     padding: 0 1rem;
+    /* margin-bottom: 40px; */
     margin: 0 auto;
 }
 .flex{

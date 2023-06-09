@@ -1,4 +1,4 @@
-import Navbar from '../components/Header'
+// import Navbar from '../components/Header'
 import './Contact.css'
 // import '../App.css'
 
@@ -6,7 +6,6 @@ function Contact() {
     return (
 
         <main>
-        <Navbar />
             
         <header className = "flex header-sm">
             <div className = "container">

@@ -6,10 +6,9 @@
 }
 .navbar{
     background-color: var(--dark);
-    position: fixed;
+    position: sticky;
     top: 0;
     width: 100%;
-    background-color: transparent;
     padding: 1rem 0;
     z-index: 999;
 }
@@ -97,5 +96,6 @@
     transition: var(--trans);
 }
 .nav-link:hover{
+    color: var(--green);
     opacity: 0.8;
 }

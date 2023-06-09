@@ -1,5 +1,5 @@
-import { useRef } from 'react';
-import ReactPlayer from 'react-player';
+// import { useRef } from 'react';
+// import ReactPlayer from 'react-player';
 import brazil from '../assets/featured-reo-de-janeiro-brazil.jpg';
 import australia from '../assets/featured-north-bondi-australia.jpg';
 import germany from '../assets/featured-berlin-germany.jpg';
@@ -10,15 +10,15 @@ import video from '../assets/video-section.mp4';
 import '../App.css'
 
 function Home() {
-    const videoRef = useRef(null);
+    // const videoRef = useRef(null);
 
-    const handlePlayButtonClick = () => {
-        if (videoRef.current && videoRef.current.paused) {
-            videoRef.current.play();
-        } else if (videoRef.current) {
-        videoRef.current.pause();
-        }
-    };
+    // const handlePlayButtonClick = () => {
+    //     if (videoRef.current && videoRef.current.paused) {
+    //         videoRef.current.play();
+    //     } else if (videoRef.current) {
+    //     videoRef.current.pause();
+    //     }
+    // };
 
     return (
         <main>
@@ -173,9 +173,9 @@ function Home() {
         <section id = "video">
             <div className = "video-wrapper flex">
                 <video loop>
-                <ReactPlayer url={video} controls={true} />
+                <source src ={video} type = "video/mp4"></source>
                 </video>
-                <button type = "button" id = "play-btn" onClick={handlePlayButtonClick}>
+                <button type = "button" id = "play-btn">
                     <i className = "fas fa-play"></i>
                 </button>
             </div>
