@@ -1,6 +1,6 @@
 // Purpose: Display Business page
 // import './Business.css'
-import Image2 from '../assets/th-2157978630.jpeg'
+import Image2 from '../../assets/gallery-3.jpg'
 
 function Business() {
     return (

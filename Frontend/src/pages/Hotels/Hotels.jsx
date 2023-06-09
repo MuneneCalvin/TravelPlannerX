@@ -1,5 +1,5 @@
 // Purpose: display Technology page
-import Image4 from '../assets/th-799315622.jpeg'
+import Image4 from '../../assets/gallery-4.jpg'
 
 function Technology() {
     return (

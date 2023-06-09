@@ -1,5 +1,5 @@
 // Author: Calvin Mwangi
-import Image3 from '../assets/th-3247364120.jpeg'
+import Image3 from '../../assets/gallery-4.jpg'
 
 function Sport() {
     return (
