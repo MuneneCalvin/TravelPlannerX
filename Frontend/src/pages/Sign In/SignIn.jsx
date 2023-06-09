@@ -16,7 +16,7 @@ function SignIn() {
             console.log('password not matched');
         }
     }
-    
+
     const handlenameChange = (e) => {
         setName(e.target.value);
     }
@@ -33,6 +33,8 @@ function SignIn() {
     return (
         <main>
             <div className="container">
+                <div className='form-container'>
+                <div className='SignUp'>
                 <form onSubmit={handleSubmit} className='registration-form'>
                     <h3>Sign Up</h3>
                     <label htmlFor="name">User Name :</label>
@@ -43,18 +45,22 @@ function SignIn() {
                     <input type="password" placeholder="Password" id='password' value={password} onChange={handlepasswordChange} required/>
                     <label htmlFor="confirmPassword">Confirm Password</label>
                     <input type="password" placeholder="Confirm Password" id='confirmPassword' value={confirmPassword} onChange={handleconfirmPasswordChange} required/>
-                    <button type='submit'>Register</button>
+                    <button type='submit' className='btn'>Register</button>
                 </form>
+                </div>
 
+                <div className='SignUp'>
                 <form onSubmit={handleSubmit} className='registration-form'>
                     <h3>Sign In</h3>
                     <label htmlFor="name">User Name :</label>
                     <input type="text" placeholder="Username" id='name' value={name} onChange={handlenameChange} required/>
                     <label htmlFor="password">Password</label>
                     <input type="password" placeholder="Password" id='password' value={password} onChange={handlepasswordChange} required/>
-                    <button type='submit'>Sign In</button>
+                    <button type='submit' className='btn'>Sign In</button>
                     <a href="#">Forget Password?</a>
                 </form>
+                </div>
+                </div>
             </div>
         </main>
     )
