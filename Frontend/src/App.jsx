@@ -2,7 +2,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Header from './components/Navbar/Header'
 import Footer from './components/Footer/Footer'
 import './App.css'
-import Home from './pages/Home';
+import Home from './pages/Home/Home';
 import Flights from './pages/Flights/Flights';
 import Cruises from './pages/Cruises/Cruises';
 import Hotels from './pages/Hotels/Hotels';

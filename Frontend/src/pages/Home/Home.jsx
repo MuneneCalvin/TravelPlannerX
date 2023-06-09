@@ -1,12 +1,12 @@
 // import { useRef } from 'react';
 // import ReactPlayer from 'react-player';
-import brazil from '../assets/featured-reo-de-janeiro-brazil.jpg';
-import australia from '../assets/featured-north-bondi-australia.jpg';
-import germany from '../assets/featured-berlin-germany.jpg';
-import thailand from '../assets/featured-khwaeng-wat-arun-thailand.jpg';
-import italy from '../assets/featured-rome-italy.jpg';
-import maldives from '../assets/featured-fuvahmulah-maldives.jpg';
-import video from '../assets/video-section.mp4';
+import brazil from '../../assets/featured-reo-de-janeiro-brazil.jpg';
+import australia from '../../assets/featured-north-bondi-australia.jpg';
+import germany from '../../assets/featured-berlin-germany.jpg';
+import thailand from '../../assets/featured-khwaeng-wat-arun-thailand.jpg';
+import italy from '../../assets/featured-rome-italy.jpg';
+import maldives from '../../assets/featured-fuvahmulah-maldives.jpg';
+import video from '../../assets/video-section.mp4';
 import './Home.css'
 
 function Home() {

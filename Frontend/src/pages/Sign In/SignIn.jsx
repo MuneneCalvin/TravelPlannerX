@@ -1,69 +1,56 @@
-import { useState } from 'react';
-import './SignIn.css'
+import './SignIn.css';
+import { useForm } from 'react-hook-form';
+import * as yup from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup';
 
-function SignIn() {
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [confirmPassword,setConfirmPassword] = useState('');
+function LoginForm() {
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        //        console.log(name, email, password, confirmPassword);
-        if (password === confirmPassword) {
-            console.log('password matched');
-        } else {
-            console.log('password not matched');
-        }
-    }
+    const schema = yup.object().shape({
+        name: yup.string().required('User Name is required'),
+        email: yup.string().email('Invalid email').required('Email is required'),
+        // age: yup.number("Age must be a number").positive("Age must be a positive number").required("Age is required"),
+        password: yup.string().required('Password is required')
+        .matches(
+            /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{4,}$/,
+        'password must contain at least 4 characters,uppercase,lowercase,number and one special case character'
+        ),
+    });
 
-    const handlenameChange = (e) => {
-        setName(e.target.value);
-    }
-    const handleemailChange = (e) => {
-        setEmail(e.target.value);
-    }
-    const handlepasswordChange = (e) => {
-        setPassword(e.target.value);
-    }
-    const handleconfirmPasswordChange = (e) => {
-        setConfirmPassword(e.target.value);
-    }
+    const { register, handleSubmit, formState: { errors } } = useForm({
+        resolver: yupResolver(schema),
+    });
+
+    const onSubmit = (data) => {
+        console.log(data);
+    };
 
     return (
-        <main>
-            <div className="container">
-                <div className='form-container'>
-                <div className='SignUp'>
-                <form onSubmit={handleSubmit} className='registration-form'>
-                    <h3>Sign Up</h3>
-                    <label htmlFor="name">User Name :</label>
-                    <input type="text" placeholder="Username" id='name' value={name} onChange={handlenameChange} required/>
-                    <label htmlFor="email">Email Address :</label>
-                    <input type="email" placeholder="Email Address" id='email' value={email} onChange={handleemailChange} required/>
-                    <label htmlFor="password">Password</label>
-                    <input type="password" placeholder="Password" id='password' value={password} onChange={handlepasswordChange} required/>
-                    <label htmlFor="confirmPassword">Confirm Password</label>
-                    <input type="password" placeholder="Confirm Password" id='confirmPassword' value={confirmPassword} onChange={handleconfirmPasswordChange} required/>
-                    <button type='submit' className='btn'>Register</button>
-                </form>
-                </div>
+    <section className='signin'>
+        <form onSubmit={handleSubmit(onSubmit)} className="login-form">
+        <h1>Welcome back</h1>
 
-                <div className='SignUp'>
-                <form onSubmit={handleSubmit} className='registration-form'>
-                    <h3>Sign In</h3>
-                    <label htmlFor="name">User Name :</label>
-                    <input type="text" placeholder="Username" id='name' value={name} onChange={handlenameChange} required/>
-                    <label htmlFor="password">Password</label>
-                    <input type="password" placeholder="Password" id='password' value={password} onChange={handlepasswordChange} required/>
-                    <button type='submit' className='btn'>Sign In</button>
-                    <a href="#">Forget Password?</a>
-                </form>
-                </div>
-                </div>
-            </div>
-        </main>
-    )
+        <div className="form-group">
+        <label>User Name</label>
+        <input type="name" placeholder='Enter your name' {...register('name', { required: true })} />
+        {errors.name && <p className="error">{errors.name.message}</p>}
+        </div>
+
+        <div className="form-group">
+        <label>Email</label>
+        <input type="email" placeholder='someone@name.com' {...register('email', { required: true })} />
+        {errors.email && <p className="error">{errors.email.message}</p>}
+        </div>
+
+        <div className="form-group">
+        <label>Password</label>
+        <input type="password" {...register('password', { required: true })} />
+        {errors.password && <p className="error">{errors.password.message}</p>}
+        </div>
+
+        <button type="submit" className="submit-btn">Sign In</button>
+    </form>
+    </section>
+    );
 }
 
-export default SignIn;
+export default LoginForm;
