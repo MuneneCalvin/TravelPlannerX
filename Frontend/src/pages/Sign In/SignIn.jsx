@@ -1,56 +1,57 @@
-import './SignIn.css';
-import { useForm } from 'react-hook-form';
-import * as yup from 'yup';
-import { yupResolver } from '@hookform/resolvers/yup';
+import {Link, useNavigate} from 'react-router-dom'
+import { useState } from 'react'
+import axios from 'axios'
 
-function LoginForm() {
+function Signup() {
+    const [values, setValues] = useState ({
+        name: '',
+        email: '',
+        password: ''
+    })
 
-    const schema = yup.object().shape({
-        name: yup.string().required('User Name is required'),
-        email: yup.string().email('Invalid email').required('Email is required'),
-        // age: yup.number("Age must be a number").positive("Age must be a positive number").required("Age is required"),
-        password: yup.string().required('Password is required')
-        .matches(
-            /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{4,}$/,
-        'password must contain at least 4 characters,uppercase,lowercase,number and one special case character'
-        ),
-    });
+    const navigate = useNavigate ();
 
-    const { register, handleSubmit, formState: { errors } } = useForm({
-        resolver: yupResolver(schema),
-    });
+    const handleInput = (event) => {
+        setValues(prev => ({...prev, [event.target.name]: [event.target.value]}))
+    }
 
-    const onSubmit = (data) => {
-        console.log(data);
-    };
-
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        axios.post('http://localhost:8080/signup', values)
+        .then(res => {
+            console.log(res);
+            navigate('/login')
+        })
+        .catch (err => console.log (err));
+    }
+    
     return (
-    <section className='signin'>
-        <form onSubmit={handleSubmit(onSubmit)} className="login-form">
-        <h1>Welcome back</h1>
-
-        <div className="form-group">
-        <label>User Name</label>
-        <input type="name" placeholder='Enter your name' {...register('name', { required: true })} />
-        {errors.name && <p className="error">{errors.name.message}</p>}
+        <div className='d-flex justify-content-center align-items-center bg-primary vh-100'>
+            <div className="bg-white p-3 rounded w-25">
+                <h2>Sign Up</h2>
+                <form onSubmit={handleSubmit}>
+                <div className='mb-3'>
+                        <label htmlFor="name"><strong>Name</strong></label>
+                        <input type="text" name="name" onChange={handleInput}  placeholder="Enter your Name" className="form-control rounded-0" />
+                        
+                    </div>
+                    <div className='mb-3'>
+                        <label htmlFor="email"><strong>Email</strong></label>
+                        <input type="email" name="email" onChange={handleInput}  placeholder="Enter your email" className="form-control rounded-0" />
+                        
+                    </div>
+                    <div className='mb-3'>
+                        <label htmlFor="password"><strong>Password</strong></label>
+                        <input type="password" name="password" onChange={handleInput} placeholder="Enter your password" className="form-control rounded-0"/>
+                        
+                    </div>
+                    <button type='submit' className='btn btn-success w-100 rounded-0'><strong>Sign Up</strong></button>
+                    <p>Do not have an account?</p>
+                    <Link to="/login" className='btn btn-default border w-100 bg-light rounded-0'>Log in</Link>
+                </form>
+            </div>
         </div>
-
-        <div className="form-group">
-        <label>Email</label>
-        <input type="email" placeholder='someone@name.com' {...register('email', { required: true })} />
-        {errors.email && <p className="error">{errors.email.message}</p>}
-        </div>
-
-        <div className="form-group">
-        <label>Password</label>
-        <input type="password" {...register('password', { required: true })} />
-        {errors.password && <p className="error">{errors.password.message}</p>}
-        </div>
-
-        <button type="submit" className="submit-btn">Sign In</button>
-    </form>
-    </section>
-    );
+    )
 }
 
-export default LoginForm;
+export default Signup;
