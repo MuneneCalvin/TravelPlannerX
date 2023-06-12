@@ -4,10 +4,10 @@
     --dark: #0e1010;
     --trans: all 0.3s ease-in-out;
 }
-section {
+/* section {
     padding: 100px 0;
     background: var(--light-grey);
-  }
+  } */
   
   h1 {
     font-size: 40px;

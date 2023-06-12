@@ -1,5 +1,7 @@
 // import { useRef } from 'react';
 // import ReactPlayer from 'react-player';
+import { Link } from 'react-router-dom';
+// import About from '../About/About'
 import brazil from '../../assets/featured-reo-de-janeiro-brazil.jpg';
 import australia from '../../assets/featured-north-bondi-australia.jpg';
 import germany from '../../assets/featured-berlin-germany.jpg';
@@ -145,7 +147,7 @@ function Home() {
                         </span>
                         <h3>Luxurious Hotel</h3>
                         <p className = "text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem quo, totam repellat velit, dignissimos sequi error a minima architecto fugit nisi dolorum repellendus?</p>
-                        <a href = "#" className = "btn">Read more</a>
+                        <Link to='/About' className = "btn">Read more</Link>
                     </div>
 
                     <div className = "services-item">
@@ -154,7 +156,7 @@ function Home() {
                         </span>
                         <h3>Trave Guide</h3>
                         <p className = "text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem quo, totam repellat velit, dignissimos sequi error a minima architecto fugit nisi dolorum repellendus?</p>
-                        <a href = "#" className = "btn">Read more</a>
+                        <Link to='/About' className = "btn">Read more</Link>
                     </div>
 
                     <div className = "services-item">
@@ -163,7 +165,7 @@ function Home() {
                         </span>
                         <h3>Suitable Price</h3>
                         <p className = "text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem quo, totam repellat velit, dignissimos sequi error a minima architecto fugit nisi dolorum repellendus?</p>
-                        <a href = "#" className = "btn">Read more</a>
+                        <Link to='/About' className = "btn">Read more</Link>
                     </div>
                 </div>
             </div>
