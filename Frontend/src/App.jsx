@@ -8,7 +8,7 @@ import Cruises from './pages/Cruises/Cruises';
 import Hotels from './pages/Hotels/Hotels';
 import Contact from './pages/Contact/Contact';
 import About from './pages/About/About';
-import SignIn from './pages/Sign In/SignIn';
+import SignIn from './pages/SignIn/SignIn';
 import Notfound from './pages/Notfound';
 
 function App() {
