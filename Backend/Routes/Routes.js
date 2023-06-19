@@ -2,7 +2,7 @@ import { getHotels, getHotel, updateHotel, deleteHotel} from "../Controllers/hot
 import { getDestinations, getDestination } from "../Controllers/destinationController.js";
 import { getFlights, getFlight } from "../Controllers/flightController.js";
 import { getBookings, getBooking, updateBooking, deleteBooking } from "../Controllers/bookingController.js";
-import { loginUser, registerUser } from "../Controllers/userController.js";
+import { loginUser, registerUser, getUsers, getUser, updateUser } from "../Controllers/userController.js";
 
 const travelRoutes = (app) => {
 
@@ -45,10 +45,13 @@ const travelRoutes = (app) => {
 
     // Authentication
     app.route("/register")
+        .get(getUsers)
         .post(registerUser);
 
     app.route("/login")
-        .post(loginUser);
+        .post(loginUser)
+        .get(getUser)
+        .put(updateUser);
 
 };
 

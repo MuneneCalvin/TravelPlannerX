@@ -19,12 +19,21 @@ export const registerUser = async (req, res) => {
     const hashedPassword = await bcrypt.hash(Password, 10);
     try {
         let pool = await sql.connect(config.sql);
-        let user = await pool.request()
+        let result = await pool.request()
             .input('userName', sql.VarChar, userName)
             .input('Email', sql.VarChar, Email)
-            .input('Password', sql.VarChar, hashedPassword)
-            .query('INSERT INTO Users (userName, Email, Password) VALUES (@userName, @Email, @Password)');
-        res.json(user.recordset);
+            .query("SELECT * FROM Users WHERE userName = @userName OR Email = @Email");
+            const user = result.recordset[0];
+            if (user) {
+                res.status(201).json({ Message : "User registered already exists..!!!!"});
+            } else {
+                await pool.request ()
+                    .input('userName', sql.VarChar, userName)
+                    .input('Email', sql.VarChar, Email)
+                    .input('Password', sql.VarChar, hashedPassword)
+                    .query("INSERT into Users (userName, Email, Password) VALUES (@userName, @Email, @Password) ");
+                res.status(201).json({Message : "User registered successfully.!!!"});
+            }
     } catch (error) {
         res.status(500).json({message: `Something went wrong. ${error}`});
     } finally {
@@ -34,17 +43,17 @@ export const registerUser = async (req, res) => {
 
 // Logging in a user
 export const loginUser = async (req, res) => {
-    const { Email, Password } = req.body;
+    const { userName, Password } = req.body;
     let pool = await sql.connect(config.sql);
     let user = await pool.request()
-        .input('Email', sql.VarChar, Email)
-        .query('SELECT * FROM Users WHERE Email = @Email');
+        .input('userName', sql.VarChar, userName)
+        .query('SELECT * FROM Users WHERE userName = @userName');
     const userRecord = user.recordset[0];
     if (!userRecord) {
         return res.status(401).json({message: "User does not exist...!!!!"});
     } else {
         if (!bcrypt.compareSync(Password, userRecord.Password)) {
-            return res.status(401).json({message: "Incorrect password...!!!!"});
+            return res.status(401).json({message: "Incorrect credentials...!!!!"});
         } else {
             const token = `JWT ${jwt.sign({ username: user.username, email: user.email }, config.jwt_secret)}`;
             res.status(200).json({ email: user.email, username: user.username, id: user.id, token: token });
