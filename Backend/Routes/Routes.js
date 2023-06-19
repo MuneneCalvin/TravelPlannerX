@@ -2,23 +2,23 @@ import { getHotels, getHotel, updateHotel, deleteHotel} from "../Controllers/hot
 import { getDestinations, getDestination } from "../Controllers/destinationController.js";
 import { getFlights, getFlight } from "../Controllers/flightController.js";
 import { getBookings, getBooking, updateBooking, deleteBooking } from "../Controllers/bookingController.js";
-import { loginUser, registerUser, getUsers, getUser, updateUser } from "../Controllers/userController.js";
+import { loginUser, registerUser, loginRequired, getUsers, getUser, updateUser } from "../Controllers/userController.js";
 
 const travelRoutes = (app) => {
 
     // Accommodations
     app.route("/hotels")
-        .get(getHotels)
-        .post(getHotels);
+        .get(loginRequired, getHotels)
+        .post(loginRequired, getHotels);
 
     app.route("/hotel/:id")
-        .get(getHotel)
-        .put(updateHotel)
-        .delete(deleteHotel);
+        .get(loginRequired, getHotel)
+        .put(loginRequired, updateHotel)
+        .delete(loginRequired, deleteHotel);
 
     // Destinations
     app.route("/destinations")
-        .get(getDestinations)
+        .get(loginRequired, getDestinations)
         .post(getDestinations);
 
     app.route("/destination/:id")
@@ -26,22 +26,22 @@ const travelRoutes = (app) => {
 
     // Flights
     app.route("/flights")
-        .get(getFlights)
-        .post(getFlights);
+        .get(loginRequired, getFlights)
+        .post(loginRequired, getFlights);
 
     app.route("/flight/:id")
-        .get(getFlight);
+        .get(loginRequired, getFlight);
 
     // Bookings
     app.route("/bookings")
-        .get(getBookings)
-        .post(getBookings);
+        .get(loginRequired, getBookings)
+        .post(loginRequired, getBookings);
 
     app.route("/booking/:id")
-        .get(getBooking)
-        .post(getBooking)
-        .put(updateBooking)
-        .delete(deleteBooking);
+        .get(loginRequired, getBooking)
+        .post(loginRequired, getBooking)
+        .put(loginRequired, updateBooking)
+        .delete(loginRequired, deleteBooking);
 
     // Authentication
     app.route("/register")
