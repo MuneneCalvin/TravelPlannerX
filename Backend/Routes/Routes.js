@@ -2,6 +2,7 @@ import { getHotels, getHotel, updateHotel, deleteHotel} from "../Controllers/hot
 import { getDestinations, getDestination } from "../Controllers/destinationController.js";
 import { getFlights, getFlight } from "../Controllers/flightController.js";
 import { getBookings, getBooking, updateBooking, deleteBooking } from "../Controllers/bookingController.js";
+import { loginUser, registerUser } from "../Controllers/userController.js";
 
 const travelRoutes = (app) => {
 
@@ -43,6 +44,12 @@ const travelRoutes = (app) => {
         .delete(deleteBooking);
 
     // Authentication
+    app.route("/register")
+        .post(registerUser);
+
+    app.route("/login")
+        .post(loginUser);
+
 };
 
 export default travelRoutes;
