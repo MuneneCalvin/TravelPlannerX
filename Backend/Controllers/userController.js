@@ -25,7 +25,7 @@ export const registerUser = async (req, res) => {
             .query("SELECT * FROM Users WHERE userName = @userName OR Email = @Email");
             const user = result.recordset[0];
             if (user) {
-                res.status(201).json({ Message : "User registered already exists..!!!!"});
+                res.status(201).json({ Message : "User already exists..!!!!"});
             } else {
                 await pool.request ()
                     .input('userName', sql.VarChar, userName)
