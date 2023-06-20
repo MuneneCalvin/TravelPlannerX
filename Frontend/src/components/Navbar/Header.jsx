@@ -30,9 +30,9 @@ function Header() {
                     <li className = "nav-item">
                         <Link to="/Contact" className = "nav-link">Contact</Link>
                     </li>
-                    {/* <li className = "nav-item">
-                        <Link to="/SignIn" className = "nav-link">Sign In</Link>
-                    </li> */}
+                    <li className = "nav-item">
+                        <Link to="/SignIn" className = "nav-link">Log Out</Link>
+                    </li>
                 </ul>
             </div>
         </div>

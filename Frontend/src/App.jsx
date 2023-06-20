@@ -9,6 +9,7 @@ import Hotels from './pages/Hotels/Hotels';
 import Contact from './pages/Contact/Contact';
 import About from './pages/About/About';
 import SignIn from './pages/SignIn/SignIn';
+import Login from './pages/Login/Login'
 import Notfound from './pages/Notfound';
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
                 <Route path="/Hotels" element={<Hotels />} />
                 <Route path="/Contact" element={<Contact />} />
                 <Route path="/SignIn" element={<SignIn />} />
+                <Route path="/Login" element={<Login />} />
                 <Route path="/About" element={<About />} />
                 <Route path='*' element={<Notfound />}/>
             </Routes>
