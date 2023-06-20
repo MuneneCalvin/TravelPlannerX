@@ -1,42 +1,65 @@
-.body {
-background: #009FFF;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to right, #ec2F4B, #009FFF);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #ec2F4B, #009FFF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+body {
+background: #009FFF;
+background: -webkit-linear-gradient(to right, #ec2F4B, #009FFF);
+background: linear-gradient(to right, #ec2F4B, #009FFF); 
 }
-.signup {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
-
-.login {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
-
-.form {
+.Form {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    padding-left: 2em;
-    padding-right: 2em;
-    padding-bottom: 0.4em;
+    margin-top: 70px;
+    margin-bottom: 25%;
+    align-items: center;
+    box-shadow: rgba(50, 50, 90, 0.2) 0px 13px 27px;
+    height: 50%;
+    width: 35%;
+    margin-inline: auto;
+    padding-block: 10px;
     background-color: #171717;
-    border-radius: 25px;
+    border-radius: 10px;
     transition: .4s ease-in-out;
+    gap: 1rem;
 }
-
-.form:hover {
+.Form:hover {
     transform: scale(1.05);
     border: 1px solid black;
 }
+.Form > .loginBanner {
+    color: #009FFF;
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+.Form > p {
+    color: red;
+}
+.input-thing {
+    display: flex;
+    align-items: center;
+}
 
-#heading {
-    text-align: center;
-    margin: 2em;
-    color: rgb(255, 255, 255);
+form input:not([type="submit"]) {
+    width: 90%;
+    margin: 5px;
+    padding: 5px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    outline: none;
+}
+form input:not([type="submit"]):focus {
+    border-bottom: 1px solid rgb(18, 172, 18);
+}
+form input[type="submit"] {
+    color: rgb(18, 172, 18);
+    width: 25%;
+    margin-top: 10%;
+    padding: 5px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
     font-size: 1.2em;
+}
+form input[type="submit"]:hover {
+    background-color: rgb(18, 172, 18);
+    color: rgb(255, 255, 255);
+    cursor: pointer;
 }
