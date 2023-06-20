@@ -1,10 +1,13 @@
 import { useForm} from 'react-hook-form'
+import {useNavigate} from 'react-router-dom'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import Axios from 'axios'
 import '../Login/Login.css'
 
 export default function Login() {
+    const navigate = useNavigate();
+
     const schema = yup.object().shape({
         userName: yup.string().required("Enter your username"),
         Email: yup.string().required("Enter your email"),
@@ -16,7 +19,14 @@ export default function Login() {
     });
 
     const onSubmit = (data) => {
-        console.log(data)
+        Axios.post('http://localhost:8083/register', data)
+        .then((response) => {
+            response.data.message && alert(response.data.message);
+            navigate('/login');
+        })
+        .catch((error) => {
+            error.data.message && alert(error.data.message);
+        });
     }
 
     return (
