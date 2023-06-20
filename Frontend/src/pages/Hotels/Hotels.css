@@ -4,17 +4,22 @@
     --dark: #0e1010;
     --trans: all 0.3s ease-in-out;
 }
-/* section {
+section {
     padding: 100px 0;
     background: var(--light-grey);
-  } */
+  }
   
-  h1 {
+.hotel h2 {
     font-size: 40px;
     font-weight: 700;
     text-align: center;
     margin-bottom: 60px;
+    color: var(--dark);
   }
+
+.hotel p{
+  color: var(--dark);
+ }
   
   .searchbox {
     width: 100%;

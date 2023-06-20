@@ -1,260 +1,92 @@
+import { useState, useEffect } from 'react';
 
+function Hotels() {
+  const [searchQuery, setSearchQuery] = useState('');
+  const [checkInDate, setCheckInDate] = useState('');
+  const [checkOutDate, setCheckOutDate] = useState('');
+  const [hotelData, setHotelData] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
-import { useEffect, useState } from 'react';
-import axios from 'axios'
-import './Hotels.css';
-
-const MyComponent = () => {
-    const [data, setData] = useState([]);
-    // const [location, setLocation] = useState('');
-    const [hotel, setHotel] = useState('');
-    const [checkIn, setCheckIn] = useState('');
-    const [checkOut, setCheckOut] = useState('');
-    const [loading, setLoading] = useState(false);
-
-    useEffect(() => {
-        if (hotel) {
-            setLoading(true);
-
-            // const searchHotelsOptions = {
-            //     method: 'GET',
-            //     url: 'https://tripadvisor16.p.rapidapi.com/api/v1/hotels/searchHotels',
-            //     params: {
-            //         geoId: location,
-            //         checkIn: checkIn,
-            //         checkOut: checkOut,
-            //         pageNumber: '1',
-            //         Currency : 'USD'
-            //     },
-            //     headers: {
-            //         'x-rapidapi-key': 'e3048ed846msh581428970c13ed8p1ad7fdjsn344b987e0e6b',
-            //         'x-rapidapi-host': 'tripadvisor16.p.rapidapi.com'
-            //     }
-            // };
-
-            // axios.request(searchHotelsOptions)
-            //     .then(response => {
-            //         setData(response.data);
-            //         setLoading(false);
-            //     })
-            //     .catch(error => {
-            //         console.log('Error in fetching:', error);
-            //     });
-
-            const getHotelDetailsOptions = {
-                method: 'GET',
-                url: 'https://tripadvisor16.p.rapidapi.com/api/v1/hotels/getHotelDetails',
-                params: {
-                    id: hotel,
-                    checkIn: checkIn,
-                    checkOut: checkOut,
-                    Currency : 'USD'
-                },
-                headers: {
-                    'x-rapidapi-key': 'e3048ed846msh581428970c13ed8p1ad7fdjsn344b987e0e6b',
-                    'x-rapidapi-host': 'tripadvisor16.p.rapidapi.com'
-                }
-            };
-
-            axios.request(getHotelDetailsOptions)
-                .then(response => {
-                    setData(response.data);
-                    setLoading(false);
-                })
-                .catch(error => {
-                    console.log('Error in fetching:', error);
-                }
-            );
+  useEffect(() => {
+    const fetchHotels = async () => {
+      const url = `https://tripadvisor16.p.rapidapi.com/api/v1/hotels/searchHotels?geoId=${searchQuery}&checkIn=${checkInDate}&checkOut=${checkOutDate}&pageNumber=1&currencyCode=USD`;
+      const options = {
+        method: 'GET',
+        headers: {
+          'X-RapidAPI-Key': 'bb5683bf3cmsh9b501cf1ec358a1p128823jsn34341b886d59',
+          'X-RapidAPI-Host': 'tripadvisor16.p.rapidapi.com'
         }
-    }, []);
+      };
 
-    const handleSearch = event => {
-        event.preventDefault();
-        setHotel(event.target.value);
-        setLoading(true);
+      setIsLoading(true);
+
+      try {
+        // Make HTTP request and wait for response
+        const response = await fetch(url, options);
+
+        // Parse JSON data from API response
+        const data = await response.json();
+        const hotelsData = data?.data?.data || [];
+
+        // Update state with hotels data
+        setHotelData(hotelsData);
+      } catch (error) {
+        console.error(error);
+      }
+
+      setIsLoading(false);
     };
 
-    const handleClear = () => {
-        setHotel('');
-        // setLocation('');
-        setCheckIn('');
-        setCheckOut('');
-        setData([]);
-    };
+    if (searchQuery && checkInDate && checkOutDate) {
+      fetchHotels();
+    }
+  }, [searchQuery, checkInDate, checkOutDate]);
 
-    return (
-    <section>
-        <h1>Book Your Hotel</h1>
-        <div className='searchbox'>
-        {/* <input type = "number" className = "form-control" placeholder="Enter Location ID" value={location} onChange={(event) => setLocation(event.target.value)}/> */}
-        <input type = "number" className = "form-control" placeholder="Enter Hotel ID" value={hotel} onChange={(event) => setHotel(event.target.value)}/>
-        <input type="date" className='form-control' placeholder='Enter check-In date' value={checkIn} onChange={(event) => setCheckIn(event.target.value)}/>
-        <input type="date" className='form-control' placeholder='Enter check-Out date' value={checkOut} onChange={(event) => setCheckOut(event.target.value)}/>
-        <button type='button' onClick={handleSearch}>Search</button>
-        <button type='button' onClick={handleClear}>Clear</button>
+  const handleBooking = () => {
+    // Handle booking logic for the selected hotel
+    // This could be a separate function or navigate to a booking page
+    // based on your application's requirements
+    console.log('Booking:', hotelData[0]);
+  };
+
+  return (
+    <div>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          setSearchQuery(e.target.elements.geoId.value);
+          setCheckInDate(e.target.elements.checkInDate.value);
+          setCheckOutDate(e.target.elements.checkOutDate.value);
+        }}
+      >
+        <input type="text" name="geoId" placeholder="Enter geoId" />
+        <input type="date" name="checkInDate" />
+        <input type="date" name="checkOutDate" />
+        <button type="submit">Search</button>
+      </form>
+
+      {isLoading ? (
+        <div>Loading...</div>
+      ) : (
+        <div className='hotel'>
+          {hotelData.map((hotel) => (
+            <div key={hotel.id} style={{ border: '1px solid #ccc', padding: '10px', margin: '10px' }}>
+              <h2>{hotel.title}</h2>
+              {hotel.cardPhotos[0] && (
+                <img
+                  src={hotel.cardPhotos[0].sizes.urlTemplate.replace('{width}', '10').replace('{height}', '10')}
+                  alt={hotel.title}
+                />
+              )}
+              <p>{hotel.secondaryInfo}</p>
+              <p>Price: {hotel.priceForDisplay}</p>
+              <button onClick={handleBooking}>Book Now</button>
+            </div>
+          ))}
         </div>
+      )}
+    </div>
+  );
+}
 
-        <div>
-            {loading ? (
-                <div className='loading'>Loading...</div>
-            ) : (
-                <div className='box'>
-                    {data.length > 0 ? (
-                        <ul>
-                            {data.map((hotel, index) => (
-                                <li key={index}>
-                                    <strong>Name:</strong> {hotel.title} <br />
-                                    <strong>Tag:</strong> {hotel.tags} <br />
-                                    <strong>Address:</strong> {hotel.address} <br />
-                                    <strong>Rating:</strong> {hotel.rating} <br />
-                                    <strong>Reviews:</strong> {hotel.numberReviews} <br />
-                                    <strong>Photos:</strong> <a href={hotel.urlTemplate}>{hotel.urlTemplate}</a>
-                                    <strong>Price:</strong> {hotel.priceForDisplay} <br />
-                                </li>
-                            ))}
-                        </ul>
-                    ) : (
-                        <div className='no-result'>No results found</div>
-                    )}
-                    </div>
-            )}
-        </div>
-    </section>
-    );
-};
-
-export default MyComponent;
-
-
-
-
-
-
-
-
-/*
-import { useEffect, useState } from 'react';
-import axios from 'axios'
-import './Hotels.css';
-
-const MyComponent = () => {
-    const [data, setData] = useState([]);
-    const [location, setLocation] = useState('');
-    const [hotel, setHotel] = useState('');
-    const [checkIn, setCheckIn] = useState('');
-    const [checkOut, setCheckOut] = useState('');
-    const [loading, setLoading] = useState(false);
-
-    useEffect(() => {
-        if (location) {
-            setLoading(true);
-
-            const searchHotelsOptions = {
-                method: 'GET',
-                url: 'https://tripadvisor16.p.rapidapi.com/api/v1/hotels/searchHotels',
-                params: {
-                    geoId: location,
-                    checkIn: checkIn,
-                    checkOut: checkOut,
-                    pageNumber: '1',
-                    Currency : 'USD'
-                },
-                headers: {
-                    'x-rapidapi-key': 'e3048ed846msh581428970c13ed8p1ad7fdjsn344b987e0e6b',
-                    'x-rapidapi-host': 'tripadvisor16.p.rapidapi.com'
-                }
-            };
-
-            axios.request(searchHotelsOptions)
-                .then(response => {
-                    setData(response.data);
-                    setLoading(false);
-                })
-                .catch(error => {
-                    console.log('Error in fetching:', error);
-                });
-
-            const getHotelDetailsOptions = {
-                method: 'GET',
-                url: 'https://tripadvisor16.p.rapidapi.com/api/v1/hotels/getHotelDetails',
-                params: {
-                    id: hotel,
-                    checkIn: checkIn,
-                    checkOut: checkOut,
-                    Currency : 'USD'
-                },
-                headers: {
-                    'x-rapidapi-key': 'e3048ed846msh581428970c13ed8p1ad7fdjsn344b987e0e6b',
-                    'x-rapidapi-host': 'tripadvisor16.p.rapidapi.com'
-                }
-            };
-
-            axios.request(getHotelDetailsOptions)
-                .then(response => {
-                    setData(response.data);
-                    setLoading(false);
-                })
-                .catch(error => {
-                    console.log('Error in fetching:', error);
-                }
-            );
-        }
-    }, []);
-
-    const handleSearch = event => {
-        event.preventDefault();
-        setLocation(event.target.value);
-        setLoading(true);
-    };
-
-    const handleClear = () => {
-        setHotel('');
-        setLocation('');
-        setCheckIn('');
-        setCheckOut('');
-        setData([]);
-    };
-
-    return (
-    <section>
-        <h1>Book Your Hotel</h1>
-        <div className='searchbox'>
-        <input type = "number" className = "form-control" placeholder="Enter Location ID" value={location} onChange={(event) => setLocation(event.target.value)}/>
-        <input type = "number" className = "form-control" placeholder="Enter Hotel ID" value={hotel} onChange={(event) => setHotel(event.target.value)}/>
-        <input type="date" className='form-control' placeholder='Enter check-In date' value={checkIn} onChange={(event) => setCheckIn(event.target.value)}/>
-        <input type="date" className='form-control' placeholder='Enter check-Out date' value={checkOut} onChange={(event) => setCheckOut(event.target.value)}/>
-        <button type='button' onClick={handleSearch}>Search</button>
-        <button type='button' onClick={handleClear}>Clear</button>
-        </div>
-
-        <div>
-            {loading ? (
-                <div className='loading'>Loading...</div>
-            ) : (
-                <div className='box'>
-                    {data.length > 0 ? (
-                        <ul>
-                            {data.map((hotel, index) => (
-                                <li key={index}>
-                                    <strong>Name:</strong> {hotel.title} <br />
-                                    <strong>Tag:</strong> {hotel.tags} <br />
-                                    <strong>Address:</strong> {hotel.address} <br />
-                                    <strong>Rating:</strong> {hotel.rating} <br />
-                                    <strong>Reviews:</strong> {hotel.numberReviews} <br />
-                                    <strong>Photos:</strong> <a href={hotel.urlTemplate}>{hotel.urlTemplate}</a>
-                                    <strong>Price:</strong> {hotel.priceForDisplay} <br />
-                                </li>
-                            ))}
-                        </ul>
-                    ) : (
-                        <div className='no-result'>No results found</div>
-                    )}
-                    </div>
-            )}
-        </div>
-    </section>
-    );
-};
-
-export default MyComponent;
-*/
+export default Hotels;
