@@ -38,7 +38,7 @@ export default function Login() {
 
     return (
         <main>
-            <div>
+            <div className='body-back'>
                 <form className='Form' onSubmit={handleSubmit(onSubmit)}>
                     <p className='loginBanner'>Log In</p>
 

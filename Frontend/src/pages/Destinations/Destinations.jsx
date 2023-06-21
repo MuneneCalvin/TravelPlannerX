@@ -1,5 +1,3 @@
-// Purpose: Display Business page
-// import './Business.css'
 import Image2 from '../../assets/gallery-3.jpg'
 
 function Business() {

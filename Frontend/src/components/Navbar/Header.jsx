@@ -33,10 +33,10 @@ function Header() {
                         {user ? (
                             <>
                                 <li className="nav-item">
-                                    <Link to="/Flights" className="nav-link">Flights</Link>
+                                    <Link to="/Destinations" className="nav-link">Destinations</Link>
                                 </li>
                                 <li className="nav-item">
-                                    <Link to="/Cruises" className="nav-link">Cruises</Link>
+                                    <Link to="/Flights" className="nav-link">Flights</Link>
                                 </li>
                                 <li className="nav-item">
                                     <Link to="/Hotels" className="nav-link">Hotels</Link>

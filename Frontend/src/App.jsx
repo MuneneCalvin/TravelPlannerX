@@ -4,7 +4,7 @@ import Footer from './components/Footer/Footer'
 import './App.css'
 import Home from './pages/Home/Home';
 import Flights from './pages/Flights/Flights';
-import Cruises from './pages/Cruises/Cruises';
+import Destinations from './pages/Destinations/Destinations';
 import Hotels from './pages/Hotels/Hotels';
 import Contact from './pages/Contact/Contact';
 import About from './pages/About/About';
@@ -25,7 +25,7 @@ function App() {
             <Routes>
                 <Route path="/" element={<Home /> } />
                 <Route path="/Flights" element={user ? <Flights /> : <Login />} />
-                <Route path="/Cruises" element={user ? <Cruises /> : <Login /> }/>
+                <Route path="/Destinations" element={user ? <Destinations /> : <Login /> }/>
                 <Route path="/Hotels" element={user ? <Hotels /> : <Login />} />
                 <Route path="/Contact" element={<Contact />} />
                 <Route path="/SignIn" element={<SignIn />} />
