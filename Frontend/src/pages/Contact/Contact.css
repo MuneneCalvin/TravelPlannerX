@@ -4,6 +4,9 @@
     --dark: #0e1010;
     --trans: all 0.3s ease-in-out;
 }
+#contact{
+    background-color: var(--light-grey);
+}
 .contact-form .form-control{
     border: 1px solid rgba(0, 0, 0, 0.1);
     color: #000;

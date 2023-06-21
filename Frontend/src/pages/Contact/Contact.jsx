@@ -6,7 +6,6 @@ function Contact() {
     return (
 
         <main>
-            
         <header className = "flex header-sm">
             <div className = "container">
                 <div className = "header-title">
@@ -39,7 +38,7 @@ function Contact() {
                             </span>
                             <div>
                                 <span>Phone</span>
-                                <p className = "text2">+01-584-886-009</p>
+                                <p className = "text2">(+254)795-756638</p>
                             </div>
                         </div>
                         <div className = "contact-item">
@@ -48,7 +47,7 @@ function Contact() {
                             </span>
                             <div>
                                 <span>Address</span>
-                                <p className = "text2">102 East 22nd Street, NY</p>
+                                <p className = "text2">102 Nairobi, Kenya</p>
                             </div>
                         </div>
                         <div className = "contact-item">
@@ -57,7 +56,7 @@ function Contact() {
                             </span>
                             <div>
                                 <span>Message</span>
-                                <p className = "text2">info@travelxplorere.com</p>
+                                <p className = "text2">info@travelxplorer.com</p>
                             </div>
                         </div>
                     </div>
