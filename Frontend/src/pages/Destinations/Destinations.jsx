@@ -1,20 +1,46 @@
-import Image2 from '../../assets/gallery-3.jpg'
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import './Destinations.css';
 
-function Business() {
-    return (
-        <div className="page2" style={{textAlign: "center", height:"100vh", }}>
-            <div className='news'>
-            <div className="title">
-                <h2>Business News</h2>
-                <br />
-                <br />
-                <img src={Image2} alt="" /> <br />
-                <br />
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus doloremque quaerat reiciendis, repellendus facere perferendis voluptate officia repellat. Repellendus expedita mollitia minus est atque sunt magnam placeat, facilis at ipsa.</p>
-            </div>
-            </div>
+const Destinations = () => {
+  const [destinations, setDestinations] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get('http://localhost:8084/destinations');
+        setDestinations(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  const handleBookNow = (destinationName) => {
+    // Handle the book now action, such as redirecting to a booking page or displaying a modal
+    console.log(`Book now clicked for destination: ${destinationName}`);
+  };
+
+  return (
+    <div>
+      {destinations.map((destination) => (
+        <div key={destination.DesName} className="destination-card">
+          <h2>{destination.DesName}</h2>
+          <p>{destination.Description}</p>
+          <img src={destination.DesImage_url} alt={destination.DesName} />
+          <p className="price">Price: ${destination.DesPrice}</p>
+          <button
+            className="book-now-button"
+            onClick={() => handleBookNow(destination.DesName)}
+          >
+            Book Now
+          </button>
         </div>
-    );
-}
+      ))}
+    </div>
+  );
+};
 
-export default Business
+export default Destinations;
