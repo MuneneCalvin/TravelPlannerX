@@ -35,7 +35,7 @@ function Destination () {
 
   return (
     <div>
-      <header className='flex'>
+      <header id='destinations' className='flex'>
         <div className='container'>
           <div className='header-title'>
             <h1>Plan Your Destination</h1>

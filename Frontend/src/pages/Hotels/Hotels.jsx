@@ -52,7 +52,7 @@ function Hotels() {
 
   return (
     <div>
-      <header className='flex'>
+      <header id='hotels' className='flex'>
         <div className='container'>
           <div className='header-title'>
             <h1>Accommodations</h1>

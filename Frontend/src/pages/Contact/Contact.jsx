@@ -1,12 +1,11 @@
-// import Navbar from '../components/Header'
 import './Contact.css'
-// import '../App.css'
+
 
 function Contact() {
     return (
 
         <main>
-        <header className = "flex header-sm">
+        <header id='contact-page' className = "flex header-sm">
             <div className = "container">
                 <div className = "header-title">
                     <h1>Contact</h1>

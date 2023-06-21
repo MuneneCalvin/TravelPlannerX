@@ -5,7 +5,7 @@ import AboutImg from '../../assets/about-img.jpg'
 function About() {
     return (
         <main>
-            <header className = "flex header-sm">
+            <header id='about-page' className = "flex header-sm">
             <div className = "container">
                 <div className = "header-title">
                     <h1>About</h1>
