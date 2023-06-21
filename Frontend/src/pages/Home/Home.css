@@ -202,6 +202,9 @@ header{
 }
 
 /* Featured */
+#featured {
+    background-color: whitesmoke;
+}
 .featured-item{
     position: relative;
     width: 100%;
@@ -255,7 +258,7 @@ header{
     transform: translateY(0);
 }
 
-/* Service */
+/* Services */
 #services{
     background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.5)), to(rgba(0, 0, 0, 0.5))), url(../../assets/services-bg.jpg) center/cover no-repeat;
     background: -o-linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../../assets/services-bg.jpg) center/cover no-repeat;
@@ -282,9 +285,12 @@ header{
 }
 
 /* video */
+#video {
+    background-color: #fff;
+}
 .video-wrapper{
     margin-top: 40px;
-    /* margin-bottom: 40px; */
+    margin-bottom: 40px;
     height: 500px;
     position: relative;
 }
@@ -683,7 +689,7 @@ template {
     }
     .facts-row{
         -webkit-column-gap: 5rem;
-           -moz-column-gap: 5rem;
+        -moz-column-gap: 5rem;
                 column-gap: 5rem;
     }
 }
