@@ -3,9 +3,14 @@ import { useNavigate } from 'react-router-dom'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import Axios from 'axios'
+import { useContext } from "react";
+import { Context } from "../../context/userContext/Context";
 import './Login.css'
 
 export default function Login() {
+    const { user, dispatch } = useContext(Context);
+    console.log(user);
+
     const navigate = useNavigate();
 
     const schema = yup.object().shape({
@@ -21,7 +26,8 @@ export default function Login() {
         Axios.post('http://localhost:8083/login', data)
             .then(({ data }) => {
                 if (data.token) {
-                    navigate('/home');
+                    dispatch({ type: "LOGIN_SUCCESS", payload: data });
+                    navigate('/');
                 }
             })
             .catch(({ response }) => {

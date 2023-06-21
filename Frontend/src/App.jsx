@@ -11,8 +11,11 @@ import About from './pages/About/About';
 import SignIn from './pages/SignIn/SignIn';
 import Login from './pages/Login/Login'
 import Notfound from './pages/Notfound';
+import { useContext } from 'react';
+import { Context } from './context/userContext/Context';
 
 function App() {
+    const { user } = useContext(Context);
 
     return (
         <>
@@ -20,10 +23,10 @@ function App() {
             <Header />
 
             <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/Flights" element={<Flights />} />
-                <Route path="/Cruises" element={<Cruises />} />
-                <Route path="/Hotels" element={<Hotels />} />
+                <Route path="/" element={<Home /> } />
+                <Route path="/Flights" element={user ? <Flights /> : <Login />} />
+                <Route path="/Cruises" element={user ? <Cruises /> : <Login /> }/>
+                <Route path="/Hotels" element={user ? <Hotels /> : <Login />} />
                 <Route path="/Contact" element={<Contact />} />
                 <Route path="/SignIn" element={<SignIn />} />
                 <Route path="/Login" element={<Login />} />
