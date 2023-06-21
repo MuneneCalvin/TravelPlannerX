@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import './Destinations.css';
 
 function Destination () {
   const [days, setDays] = useState(0);
@@ -34,24 +35,35 @@ function Destination () {
 
   return (
     <div>
+      <header className='flex'>
+        <div className='container'>
+          <div className='header-title'>
+            <h1>Plan Your Destination</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis, corrupti sint. Ut accusantium repudiandae voluptatum?</p>
+          </div>
+          <div className='header-form-dest'>
+            <h2>Choose Your Destination:</h2>
+            <form>
+              <label htmlFor="destination">Destination:</label>
+              <input type="text" className='form-control' id="destination" value={destination} onChange={handleDestinationChange} />
 
-      <label htmlFor="destination">Destination:</label>
-      <input type="text" id="destination" value={destination} onChange={handleDestinationChange} />
+              <label htmlFor="days">Number of days:</label>
+              <input type="number" className='form-control' id="days" value={days} onChange={handleDaysChange} />
 
-      <label htmlFor="days">Number of days:</label>
-      <input type="number" id="days" value={days} onChange={handleDaysChange} />
-
-      <button onClick={handlePlanTrip}>Plan Trip</button>
+              <button onClick={handlePlanTrip}>Plan Trip</button>
+            </form>
+          </div>
+        </div>
+      </header>
 
       {tripData && (
-        <div>
+        <div id='destination'>
           <h2>Trip Details</h2>
           <div className='Detail-card'>
           <ul>
             {tripData.plan.map((day) => (
               <li key={day.day}>
                 <h3>Day {day.day}</h3>
-                <div className='card-activities'>
                 <ul>
                   {day.activities.map((activity) => (
                     <li key={activity.time}>
@@ -59,7 +71,6 @@ function Destination () {
                     </li>
                   ))}
                 </ul>
-                </div>
               </li>
             ))}
           </ul>
