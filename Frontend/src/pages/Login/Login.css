@@ -54,7 +54,7 @@ background: linear-gradient(to right, #ec2F4B, #009FFF);
 form input:not([type="submit"]):focus {
     border-bottom: 1px solid rgb(18, 172, 18);
 }
-form input[type="submit"] {
+.Form .submitBtn {
     color: rgb(18, 172, 18);
     width: 25%;
     margin-top: 10%;
@@ -64,7 +64,7 @@ form input[type="submit"] {
     border-radius: 5px;
     font-size: 1.2em;
 }
-form input[type="submit"]:hover {
+.Form .submitBtn:hover {
     background-color: rgb(18, 172, 18);
     color: rgb(255, 255, 255);
     cursor: pointer;
