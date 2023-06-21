@@ -42,7 +42,7 @@ background: linear-gradient(to right, #ec2F4B, #009FFF);
     align-items: center;
 }
 
-form input:not([type="submit"]) {
+.Form input:not([type="submit"]) {
     width: 90%;
     margin: 5px;
     padding: 5px;

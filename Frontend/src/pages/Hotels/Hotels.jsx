@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import './Hotels.css';
 
 function Hotels() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -51,30 +52,39 @@ function Hotels() {
 
   return (
     <div>
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          setSearchQuery(e.target.elements.geoId.value);
-          setCheckInDate(e.target.elements.checkInDate.value);
-          setCheckOutDate(e.target.elements.checkOutDate.value);
-        }}
-      >
-        <input type="text" name="geoId" placeholder="Enter geoId" />
-        <input type="date" name="checkInDate" />
-        <input type="date" name="checkOutDate" />
-        <button type="submit">Search</button>
-      </form>
+      <header className='flex'>
+        <div className='container'>
+          <div className='header-title'>
+            <h1>Accommodations</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis, corrupti sint. Ut accusantium repudiandae voluptatum?</p>
+          </div>
+          <div className='header-form-hotel'>
+            <h2>Choose Your Accommodation</h2>
+            <form onSubmit={(e) => {
+              e.preventDefault();
+              setSearchQuery(e.target.elements.geoId.value);
+              setCheckInDate(e.target.elements.checkInDate.value);
+              setCheckOutDate(e.target.elements.checkOutDate.value);
+            }}>
+              <input type="text" className='form-control' name="geoId" placeholder="Enter geoId" />
+              <input type="date" className='form-control' name="checkInDate" placeholder='Check In Date' />
+              <input type="date" className='form-control' name="checkOutDate" placeholder='Check Out Date' />
+              <button type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+      </header>
 
       {isLoading ? (
         <div>Loading...</div>
       ) : (
         <div className='hotel'>
           {hotelData.map((hotel) => (
-            <div key={hotel.id} style={{ border: '1px solid #ccc', padding: '10px', margin: '10px' }}>
-              <h2>{hotel.title}</h2>
+            <div key={hotel.id} className='hotel-card'>
+              <h2 className='hotel-title'>{hotel.title}</h2>
               {hotel.cardPhotos[0] && (
                 <img
-                  src={hotel.cardPhotos[0].sizes.urlTemplate.replace('{width}', '10').replace('{height}', '10')}
+                  src={hotel.cardPhotos[0].sizes.urlTemplate.replace('{width}', '100').replace('{height}', '100')}
                   alt={hotel.title}
                 />
               )}
