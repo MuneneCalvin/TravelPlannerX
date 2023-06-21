@@ -1,7 +1,4 @@
-// import { useRef } from 'react';
-// import ReactPlayer from 'react-player';
 import { Link } from 'react-router-dom';
-// import About from '../About/About'
 import brazil from '../../assets/featured-reo-de-janeiro-brazil.jpg';
 import australia from '../../assets/featured-north-bondi-australia.jpg';
 import germany from '../../assets/featured-berlin-germany.jpg';
@@ -12,15 +9,6 @@ import video from '../../assets/video-section.mp4';
 import './Home.css'
 
 function Home() {
-    // const videoRef = useRef(null);
-
-    // const handlePlayButtonClick = () => {
-    //     if (videoRef.current && videoRef.current.paused) {
-    //         videoRef.current.play();
-    //     } else if (videoRef.current) {
-    //     videoRef.current.pause();
-    //     }
-    // };
 
     return (
         <main>
