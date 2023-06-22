@@ -2,6 +2,8 @@ import express, { urlencoded } from "express";
 import config from "./Db/config.js";
 import Routes from "./Routes/Routes.js";
 import jwt  from "jsonwebtoken";
+import { getFlights, getFlight } from "./Controllers/flightController.js";
+
 
 const app = express();
 
@@ -13,7 +15,7 @@ app.use(express.urlencoded({extended: true}));
 app.use(function(req, res, next) {
     res.setHeader('Access-Control-Allow-Origin', 'http://localhost:5173');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
     next();
 });
 
@@ -30,6 +32,12 @@ app.use((req, res, next) => {
         next();
     }
 });
+
+// API endpoint to get all flights
+app.get("http://localhost:8086/flights", getFlights);
+
+// API endpoint to get a single flight
+app.get("http://localhost:8086/flight/:id", getFlight);
 
 Routes(app);
 

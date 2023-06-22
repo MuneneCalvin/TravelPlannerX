@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 
-const App = () => {
+function Flights () {
   const [flights, setFlights] = useState([]);
 
   useEffect(() => {
-    fetch('/api/flights')
-      .then(response => response.json())
+    fetch('http://localhost:8086/flights',)
+      .then(response => console.log(response) || response.json() )
       .then(data => setFlights(data))
       .catch(error => console.error(error));
   }, []);
@@ -43,9 +43,9 @@ const App = () => {
       </table>
     </div>
   );
-};
+}
 
-export default App;
+export default Flights;
 
 
 
