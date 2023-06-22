@@ -1,0 +1,82 @@
+:root {
+    --color: #0077ff;
+    --green: #1ec6b6;
+    --light-grey: #f7f7f7;
+    --dark: #0e1010;
+    --trans: all 0.3s ease-in-out;
+}
+#flight-page {
+    min-height: 100vh;
+    padding-top: 7rem;
+    background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.4)), to(rgba(0, 0, 0, 0.4))), url(../../assets/gallery-6.jpg) center/cover no-repeat;
+    background: -o-linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(../../assets/gallery-6.jpg) center/cover no-repeat;
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(../../assets/gallery-6.jpg) center/cover no-repeat;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    color: #fff;
+    text-align: center2
+}
+#flight {
+    background: #2b5876;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #4e4376, #2b5876);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #4e4376, #2b5876); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
+}
+.flight-container {
+    /* padding: 50px 0; */
+    background-color: var(--light-grey);
+}
+table {
+    margin-top: 2px;
+    /* margin-left: 30px; */
+    margin-bottom: 50px;
+    width: 100%;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid var(--light-grey);
+}
+tr:hover {
+    background-color: #00416A;
+}
+
+th {
+    background-color: var(--dark);
+}
+.book-now-button {
+    /* font-family: inherit; */
+    padding: 6px 12px;
+    overflow: hidden;
+    z-index: 1;
+    background-color: var(--green);
+    color: #fff;
+    border: 2px solid var(--green);
+    border-radius: 10px;
+    position: relative;
+}
+.book-now-button::before {
+    position: absolute;
+    content: "";
+    background: var(--color);
+    width: 150px;
+    height: 200px;
+    z-index: -1;
+    border-radius: 50%;
+}
+.book-now-button:hover {
+    border: 2px solid var(--color);
+    color: white;
+}
+.book-now-button:before {
+    top: 100%;
+    left: 100%;
+    transition: .3s all;
+}
+.book-now-button:hover::before {
+    top: -30px;
+    left: -30px;
+}
