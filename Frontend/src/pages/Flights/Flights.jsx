@@ -1,4 +1,55 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
+
+const App = () => {
+  const [flights, setFlights] = useState([]);
+
+  useEffect(() => {
+    fetch('/api/flights')
+      .then(response => response.json())
+      .then(data => setFlights(data))
+      .catch(error => console.error(error));
+  }, []);
+
+  return (
+    <div>
+      <h1>Flight Data</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>Flight Name</th>
+            <th>Origin</th>
+            <th>Destination</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Duration</th>
+            <th>Seats Available</th>
+            <th>Flight Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          {flights.map(flight => (
+            <tr key={flight.id}>
+              <td>{flight.FlightName}</td>
+              <td>{flight.origin}</td>
+              <td>{flight.destination}</td>
+              <td>{flight.start_date}</td>
+              <td>{flight.end_date}</td>
+              <td>{flight.Duration}</td>
+              <td>{flight.seats_available}</td>
+              <td>{flight.FlightPrice}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+};
+
+export default App;
+
+
+
+/*import { useState, useEffect } from 'react';
 
 function Flights() {
   const [sourceAirportCode, setSourceAirportCode] = useState('BOM');
@@ -44,7 +95,7 @@ function Flights() {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    // fetchFlights();
+    fetchFlights();
   };
 
   const handleBooking = (flight) => {
@@ -166,3 +217,4 @@ function Flights() {
 }
 
 export default Flights;
+*/
