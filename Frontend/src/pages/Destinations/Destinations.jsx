@@ -36,7 +36,7 @@ const DestinationsList = () => {
           <p>{destination.Description}</p>
           <img src={destination.DesImage_url} alt={destination.DesName} />
           <p className="price">Price: ${destination.DesPrice}</p>
-          <button className="book-now-button" onClick={() => handleBookNow(destination)}>Book Now</button>
+          <button className="book-now-btn" onClick={() => handleBookNow(destination)}>Book Now</button>
         </div>
       ))}
     </div>

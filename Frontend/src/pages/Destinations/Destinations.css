@@ -1,4 +1,8 @@
 :root{
+  --bg: #000;
+  --hover-bg: #ff90e8;
+  --hover-text: #000;
+  --color: #0077ff;
   --green: #1ec6b6;
   --light-grey: #f7f7f7;
   --dark: #0e1010;
@@ -66,6 +70,31 @@
 .destination-card .price {
   font-weight: bold;
 }
+/* inspired form gumroad website */
+.book-now-btn {
+  color: #fff;
+  border: 2px solid var(--green);
+  border-radius: 9px;
+  padding: 5px 12px;
+  background: var(--green);
+  transition: 0.2s;
+  font-weight: 600;
+}
+
+.book-now-btn:hover {
+  color: var(--hover-text);
+  transform: translate(-0.25rem,-0.25rem);
+  background: var(--hover-bg);
+  border: 2px solid var(--hover-bg);
+  box-shadow: 0.25rem 0.25rem var(--bg);
+}
+
+.book-now-btn:active {
+  transform: translate(0);
+  box-shadow: none;
+}
+
+
 
 /*
 .header-form-dest {
