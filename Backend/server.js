@@ -2,7 +2,6 @@ import express, { urlencoded } from "express";
 import config from "./Db/config.js";
 import Routes from "./Routes/Routes.js";
 import jwt  from "jsonwebtoken";
-import { getFlights, getFlight } from "./Controllers/flightController.js";
 
 
 const app = express();
@@ -32,12 +31,6 @@ app.use((req, res, next) => {
         next();
     }
 });
-
-// API endpoint to get all flights
-app.get("http://localhost:8086/flights", getFlights);
-
-// API endpoint to get a single flight
-app.get("http://localhost:8086/flight/:id", getFlight);
 
 Routes(app);
 

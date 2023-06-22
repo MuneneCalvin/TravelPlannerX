@@ -11,6 +11,11 @@ function Flights() {
       .catch(error => console.error(error));
   }, []);
 
+  const handleBook = (flight) => {
+    // Implement your book now logic here
+    console.log('Book Now:', flight);
+  };
+
   return (
     <div className='flight-container'>
       <header id='flight-page' className = "flex header-sm">
@@ -49,7 +54,7 @@ function Flights() {
               <td>{flight.seats_available}</td>
               <td>{flight.FlightPrice}</td>
               <td>
-                <button className="book-now-button">Book Now</button>
+                <button className="book-now-button" onClick={ () => handleBook(flight)}>Book Now</button>
               </td>
             </tr>
           ))}
