@@ -1,0 +1,132 @@
+:root{
+    --bg: #000;
+    --hover-bg: #ff90e8;
+    --hover-text: #000;
+    --color: #0077ff;
+    --green: #1ec6b6;
+    --light-grey: #f7f7f7;
+    --dark: #0e1010;
+    --trans: all 0.3s ease-in-out;
+}
+#Header {
+    width: 100%;
+    height: 75%;
+    background-image: url(../../images/background.png);
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    gap: 2rem;
+}
+.side-nav {
+    width: 250px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    padding: 30px 15px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+.user div {
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+
+}
+.user {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    font-size: 12px;
+    padding: 10px;
+    border-radius: 8px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.user h2 {
+    color: var(--hover-text);
+    font-size: 18px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+.user img {
+    width: 40px;
+    border-radius: 50%;
+    margin: auto;
+}
+ul {
+    list-style: none;
+    padding: 0 15px;
+}
+ul li {
+    margin: 30px 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    cursor: pointer;
+}
+ul li img {
+    width: 30px;
+    margin-right: 10px;
+}
+ul li p {
+    white-space: nowrap;
+}
+
+/* Main nav */
+.main-nav {
+    background-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(1px);
+    color: var(--color);
+    padding: 20px;
+  }
+  
+  .main-nav h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .booking-container {
+
+    margin-left: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .booking-card {
+    width: 300px;
+    background-color: var(--light-grey);
+    color: var(--dark);
+    padding: 20px;
+    border-radius: 8px;
+  }
+  
+  .booking-card p {
+    margin: 5px 0;
+  }
+  
+  .button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+  
+  .button-container button {
+    background-color: var(--green);
+    color: #fff;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: var(--trans);
+  }
+  
+  .button-container button:hover {
+    background-color: var(--hover-bg);
+    color: var(--hover-text);
+  }

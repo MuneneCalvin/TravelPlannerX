@@ -10,6 +10,7 @@ import Contact from './pages/Contact/Contact';
 import About from './pages/About/About';
 import SignIn from './pages/SignIn/SignIn';
 import Login from './pages/Login/Login'
+import Booking from './pages/Booking/Booking';
 import Notfound from './pages/Notfound';
 import { useContext } from 'react';
 import { Context } from './context/userContext/Context';
@@ -31,6 +32,7 @@ function App() {
                 <Route path="/SignIn" element={<SignIn />} />
                 <Route path="/Login" element={<Login />} />
                 <Route path="/About" element={<About />} />
+                <Route path="/Booking" element={user ? <Booking /> : <Login />} />
                 <Route path='*' element={<Notfound />}/>
             </Routes>
 

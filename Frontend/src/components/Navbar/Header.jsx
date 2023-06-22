@@ -41,12 +41,16 @@ function Header() {
                                 <li className="nav-item">
                                     <Link to="/Hotels" className="nav-link">Hotels</Link>
                                 </li>
+                                <li>
+                                    <Link to="/Booking" className="nav-link">Booking</Link>
+                                </li>
                                 <li className="nav-item">
                                     <Link to="/Contact" className="nav-link">Contact</Link>
                                 </li>
                                 <li className='nav-item'>
                                     <Link onClick={handleLogout} className="nav-link">Log Out</Link>
                                 </li>
+
                             </>
                         ) : (
                             <>

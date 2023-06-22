@@ -1,0 +1,96 @@
+import { useEffect, useState } from 'react'
+import user from '../../images/user.png'
+import dashboard from '../../images/dashboard.png'
+import reports from '../../images/reports.png'
+import rewards from '../../images/rewards.png'
+import messages from '../../images/messages.png'
+import video from '../../images/video-chat.png'
+import projects from '../../images/projects.png'
+import members from '../../images/members.png'
+import setting from '../../images/setting.png'
+import logout from '../../images/logout.png'
+import './Booking.css'
+
+function Booking() {
+    const [booking, setBooking] = useState([]);
+    
+    useEffect(() => {
+        fetch('http://localhost:8086/bookings')
+            .then((response) => response.json())
+            .then((data) => setBooking(data))
+            .catch((error) => console.error(error));
+    }, []);
+
+    const handleDelete = (BookingId) => {
+        fetch(`http://localhost:8086/booking/${BookingId}`, {
+            method: 'DELETE',
+        })
+            .then((response) => {
+                if (response.ok) {
+                    console.log(`Booking with ID: ${BookingId} deleted`);
+                    alert("Booking Deleted Successfully");
+                } else {
+                    console.error('Error:', response);
+                    alert("Booking Not Deleted");
+                }
+            })
+            .catch ((error) => {
+                console.error('Error:', error);
+                alert("Booking Not Deleted");
+            })
+    };
+    
+    const handleEdit = (id) => {
+        // Handle edit operation for the booking with the specified id
+        // You can navigate to an edit page or show a modal for editing
+        console.log(`Edit booking with ID: ${id}`);
+    };
+
+    return (
+        <div id='Header'>
+            <div className="side-nav">
+                <div className="user">
+                    <img src={user} className='user-img' />
+                    <div className='user-details'>
+                        <h2>Calvin Shawn</h2>
+                        <p>Munenecalcn@gmail.com</p>
+                    </div>
+                </div>
+                <ul>
+                    <li><img src={dashboard} /><p>Dashboard</p></li>
+                    <li><img src={reports} /><p>Reports</p></li>
+                    <li><img src={rewards} /><p>Rewards</p></li>
+                    <li><img src={messages} /><p>Messages</p></li>
+                    <li><img src={video} /><p>Video Chat</p></li>
+                    <li><img src={projects} /><p>Our Projects</p></li>
+                    <li><img src={members} /><p>Core members</p></li>
+                    <li><img src={setting} /><p>Settings</p></li>
+                </ul>
+                <ul>
+                    <li><img src={logout} alt="" /><p>Log Out</p></li>
+                </ul>
+            </div>
+
+            <div className='main-nav'>
+                <h2>My Bookings:</h2>
+                <div className='booking-container'>
+                    {booking.map((booking) => (
+                        <div className='booking-card' key={booking.BookingId}>
+                            <p>Booking ID: {booking.BookingId}</p>
+                            <p>Booking Date: {booking.BookingDate}</p>
+                            <p>Status: {booking.BookingStatus}</p>
+                            <p>Accommodation: {booking.AccId}</p>
+                            <p>Price: {booking.total_price}</p>
+                            <div className='button-container'>
+                                <button onClick={() => handleEdit(booking.BookingId)}>Edit</button>
+                                <button onClick={() => handleDelete(booking.BookingId)}>Delete</button>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </div>
+    )
+}
+
+export default Booking
