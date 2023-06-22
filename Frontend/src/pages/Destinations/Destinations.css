@@ -17,6 +17,57 @@
     color: #fff;
     text-align: center;
 }
+#Destination {
+  background: #457fca;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #5691c8, #457fca);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #5691c8, #457fca); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  
+}
+.destinations-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.destination-card {
+  background: #005C97;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #363795, #005C97);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #363795, #005C97); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  
+  margin-left: 10px;
+  margin-bottom: 35px;
+  width: 300px;
+  border: 1px solid #2980b9;
+  border-radius: 10px;
+  padding: 10px;
+  margin-top: 20px;
+  transition: .4s ease-in-out;
+}
+.destination-card:hover {
+  transform: scale(1.05);
+}
+
+.destination-card h2 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.destination-card p {
+  margin-bottom: 10px;
+}
+
+.destination-card img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+  border-radius: 10px;
+}
+
+.destination-card .price {
+  font-weight: bold;
+}
+
+/*
 .header-form-dest {
 background: rgba(0, 0, 0, 0.5);
   padding: 3rem;
@@ -64,8 +115,6 @@ background: var(--green);
 color: white;
 transform: scale(1.05);
 }
-
-/* Card */
 .card-container {
   display: flex;
   flex-wrap: wrap;
@@ -82,4 +131,4 @@ transform: scale(1.05);
 .card h3 {
   margin-top: 0;
 }
-
+*/
