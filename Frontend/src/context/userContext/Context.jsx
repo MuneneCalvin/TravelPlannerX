@@ -20,11 +20,7 @@ export const ContextProvider = ({ children }) => {
 
     return (
         <Context.Provider
-            value={{
-                user: state.user,
-                dispatch,
-            }}
-        >
+            value={{ user: state.user, dispatch, }}>
             {children}
         </Context.Provider>
     );

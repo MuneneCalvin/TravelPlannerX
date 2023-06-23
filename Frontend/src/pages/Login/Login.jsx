@@ -8,8 +8,7 @@ import { Context } from "../../context/userContext/Context";
 import './Login.css'
 
 export default function Login() {
-    const { user, dispatch } = useContext(Context);
-    console.log(user);
+    const { dispatch } = useContext(Context);
 
     const navigate = useNavigate();
 
