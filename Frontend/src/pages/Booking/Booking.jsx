@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import user from '../../images/user.png'
+import { useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
+import { Context } from '../../context/userContext/Context';
+import userimg from '../../images/user.png'
 import dashboard from '../../images/dashboard.png'
 import reports from '../../images/reports.png'
 // import rewards from '../../images/rewards.png'
@@ -13,6 +16,10 @@ import logout from '../../images/logout.png'
 import './Booking.css'
 
 function Booking() {
+    const navigate = useNavigate();
+
+    const { user, dispatch } = useContext(Context);
+
     const [booking, setBooking] = useState([]);
     
     useEffect(() => {
@@ -47,11 +54,16 @@ function Booking() {
         console.log(`Edit booking with ID: ${id}`);
     };
 
+    const handleLogout = () => {
+        dispatch({ type: "LOGOUT" });
+        navigate("/Home");
+    }
+
     return (
         <div id='Header'>
             <div className="side-nav">
                 <div className="user">
-                    <img src={user} className='user-img' />
+                    <img src={userimg} className='user-img' />
                     <div className='user-details'>
                         <h2>Calvin Shawn</h2>
                         <p>Munenecalcn@gmail.com</p>
@@ -68,7 +80,7 @@ function Booking() {
                     <li><img src={setting} /><Link to="/Setting">Settings</Link></li>
                 </ul>
                 <ul>
-                    <li><img src={logout} /><Link to="/Home">Log Out</Link></li>
+                    <li><img src={logout} /><Link onClick={handleLogout}>Log Out</Link></li>
                 </ul>
             </div>
 
