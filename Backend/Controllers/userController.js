@@ -39,7 +39,7 @@ export const registerUser = async (req, res) => {
     } finally {
         sql.close();
     }
-};
+}; 
 
 // Logging in a user
 export const loginUser = async (req, res) => {

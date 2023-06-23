@@ -39,19 +39,18 @@ export const getBooking = async (req, res) => {
 // Creating a booking
 export const createBooking = async (req, res) => {
     try {
-        const { BookingDate, BookingNo, TravelerCount, CustomerId, TripTypeId, PackageId } = req.body;
+        const { BookingDate, check_in_date, check_out_date, status, total_price } = req.body;
         let pool = await sql.connect(config.sql);
-        const query = `INSERT INTO Bookings (BookingDate, BookingStatus, check_in_date, check_out_date, status, total_price, rating, UserId, FlightId, AccId) VALUES ('${BookingDate}', '${BookingStatus}', '${check_in_date}', '${check_out_date}', '${status}', '${total_price}', '${rating}', '${UserId}', '${FlightId}', '${AccId}')`;
+        const query = `INSERT INTO Bookings (BookingDate, check_in_date, check_out_date, status, total_price, UserId, FlightId, AccId) VALUES ('${BookingDate}', '${BookingStatus}', '${check_in_date}', '${check_out_date}', '${status}', '${total_price}', '${rating}', '${UserId}', '${FlightId}', '${AccId}')`;
         let booking = await pool.request()
             .input("BookingDate", sql.DateTime, BookingDate)
-            .input("BookingStatus", sql.NVarChar, BookingNo)
-            .input("check_in_date", sql.Int, TravelerCount)
-            .input("check_out_date", sql.Int, CustomerId)
-            .input("status", sql.NVarChar, TripTypeId)
-            .input("total_price", sql.Int, PackageId)
-            .input("rating", sql.Int, PackageId)
+            .input("check_in_date", sql.Int, check_in_date)
+            .input("check_out_date", sql.Int, check_out_date)
+            .input("status", sql.NVarChar, status)
+            .input("total_price", sql.Int, total_price)
             .input("UserId", sql.Int, PackageId)
             .input("FlightId", sql.Int, PackageId)
+            .input("AccId", sql.Int, PackageId)
             .query(query);
         res.status(201).json({ Message: `Booking was created successfully..!!!!` });
     } catch (error) {
@@ -65,19 +64,17 @@ export const createBooking = async (req, res) => {
 export const updateBooking = async (req, res) => {
     try {
         const { id } = req.params;
-        const { BookingDate, BookingStatus, check_in_date, check_out_date, status, total_price, rating, UserId, FlightId } = req.body;
+        const { BookingDate, check_in_date, check_out_date, status, total_price, rating, UserId, FlightId } = req.body;
         let pool = await sql.connect(config.sql);
         await pool.request()
-            .input("id", sql.Int, id)
             .input("BookingDate", sql.DateTime, BookingDate)
-            .input("BookingStatus", sql.VarChar, BookingStatus)
             .input("check_in_date", sql.Int, check_in_date)
             .input("check_out_date", sql.Int, check_out_date)
-            .input("status", sql.VarChar, status)
+            .input("status", sql.NVarChar, status)
             .input("total_price", sql.Int, total_price)
-            .input("rating", sql.Int, rating)
             .input("UserId", sql.Int, UserId)
             .input("FlightId", sql.Int, FlightId)
+            .input("AccId", sql.Int, PackageId)
             .query("UPDATE Bookings SET BookingDate = @BookingDate, BookingStatus = @BookingStatus, check_in_date = @check_in_date, check_out_date = @check_out_date, status = @status, total_price = @total_price, rating = @rating, UserId = @UserId, FlightId = @FlightId WHERE BookingId = @id");
         res.status(200).json({ Message: `Booking was updated successfully..!!!!` });
     } catch (error) {
