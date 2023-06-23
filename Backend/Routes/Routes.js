@@ -1,7 +1,7 @@
 import { getHotels, getHotel, updateHotel, deleteHotel} from "../Controllers/hotelController.js";
 import { getDestinations, getDestination } from "../Controllers/destinationController.js";
 import { getFlights, getFlight } from "../Controllers/flightController.js";
-import { getBookings, getBooking, updateBooking, deleteBooking, getBookingsByUser } from "../Controllers/bookingController.js";
+import { getBookings, getBooking, createBooking, updateBooking, deleteBooking, getBookingsByUser } from "../Controllers/bookingController.js";
 import { loginUser, registerUser, getUsers, getUser, updateUser } from "../Controllers/userController.js";
 
 const travelRoutes = (app) => {
@@ -35,7 +35,7 @@ const travelRoutes = (app) => {
     // Bookings
     app.route("/bookings")
         .get(getBookings)
-        .post(getBookings);
+        .post(createBooking);
 
     app.route("/booking/:id")
         .get(getBooking)
