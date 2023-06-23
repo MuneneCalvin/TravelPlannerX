@@ -45,9 +45,9 @@ const travelRoutes = (app) => {
 
     app.route("/bookings/:id")
         .get(getBookingsByUser)
-        .post(getBookingsByUser)
-        .put(getBookingsByUser)
-        .delete(getBookingsByUser);
+        .post(createBooking)
+        .put(updateBooking)
+        .delete(deleteBooking);
 
     // Authentication
     app.route("/register")
