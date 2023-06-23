@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import user from '../../images/user.png'
 import dashboard from '../../images/dashboard.png'
 import reports from '../../images/reports.png'
-import rewards from '../../images/rewards.png'
+// import rewards from '../../images/rewards.png'
 import messages from '../../images/messages.png'
-import video from '../../images/video-chat.png'
+// import video from '../../images/video-chat.png'
 import projects from '../../images/projects.png'
 import members from '../../images/members.png'
 import setting from '../../images/setting.png'
@@ -57,17 +58,17 @@ function Booking() {
                     </div>
                 </div>
                 <ul>
-                    <li><img src={dashboard} /><p>Dashboard</p></li>
-                    <li><img src={reports} /><p>Reports</p></li>
-                    <li><img src={rewards} /><p>Rewards</p></li>
-                    <li><img src={messages} /><p>Messages</p></li>
-                    <li><img src={video} /><p>Video Chat</p></li>
-                    <li><img src={projects} /><p>Our Projects</p></li>
-                    <li><img src={members} /><p>Core members</p></li>
-                    <li><img src={setting} /><p>Settings</p></li>
+                    <li><img src={dashboard} /><Link to="/Dashboard">Dashboard</Link></li>
+                    <li><img src={reports} /><Link to="/Booking">My Booking</Link></li>
+                    {/* <li><img src={rewards} /><p>Rewards</p></li> */}
+                    <li><img src={messages} /><Link to="/Contact">Contact Us</Link></li>
+                    {/* <li><img src={video} /><p>Video Chat</p></li> */}
+                    <li><img src={projects} /><Link to="/Gallery">Gallery</Link></li>
+                    <li><img src={members} /><Link to="/Profile">My Profile</Link></li>
+                    <li><img src={setting} /><Link to="/Setting">Settings</Link></li>
                 </ul>
                 <ul>
-                    <li><img src={logout} alt="" /><p>Log Out</p></li>
+                    <li><img src={logout} /><Link to="/Home">Log Out</Link></li>
                 </ul>
             </div>
 
