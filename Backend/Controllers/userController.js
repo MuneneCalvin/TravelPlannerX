@@ -55,8 +55,8 @@ export const loginUser = async (req, res) => {
         if (!bcrypt.compareSync(Password, userRecord.Password)) {
             return res.status(401).json({message: "Incorrect credentials...!!!!"});
         } else {
-            const token = `JWT ${jwt.sign({ username: user.username, email: user.email }, config.jwt_secret)}`;
-            res.status(200).json({ email: user.email, username: user.username, id: user.id, token: token });
+            const token = `JWT ${jwt.sign({ username: user.userName, email: user.Email }, config.jwt_secret)}`;
+            res.status(200).json({ email: user.Email, username: user.userName, id: user.id, token: token });
         }
     }
 };
