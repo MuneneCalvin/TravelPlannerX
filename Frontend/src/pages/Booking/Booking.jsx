@@ -12,18 +12,14 @@ import members from '../../images/members.png'
 import setting from '../../images/setting.png'
 import logout from '../../images/logout.png'
 import './Booking.css'
+import Profile from '../../components/Profile/profile';
 
 function Booking() {
     const navigate = useNavigate();
     const { user, dispatch } = useContext(Context);
-    // const [userDetails, setUserDetails] = useState([]);
     const [booking, setBooking] = useState([]);
     const [activeTab, setActiveTab] = useState("bookings");
     const [formData, setFormData] = useState({ bookingDate: '', checkInDate: '', checkOutDate: '', flightId: '', accId: '', totalPrice: '', status: '' });
-
-    // useEffect(() => {
-    //     setUserDetails(user);
-    // }, [user]);
 
     useEffect(() => {
         fetch('http://localhost:8080/bookings?userId=${userDetails.UserId}')
@@ -152,13 +148,7 @@ function Booking() {
                     <>
                         <h2>My Profile:</h2>
                         <div className='profile-container'>
-                            <img src={userimg} className='profile-img' />
-                        <div className='profile-card'>
-                        <div className='profile-details'>
-                            <h2>{user.username}</h2>
-                            <p>{user.email}</p>
-                        </div>
-                        </div>
+                        <Profile />
                         </div>
                     </>
                 )}
