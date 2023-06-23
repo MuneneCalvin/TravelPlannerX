@@ -19,11 +19,11 @@ function Booking() {
     const [userDetails, setUserDetails] = useState([]);
     const [booking, setBooking] = useState([]);
     const [activeTab, setActiveTab] = useState("bookings");
-    const [formData, setFormData] = useState({ checkInDate: '', checkOutDate: '', flightId: '', accId: '', totalPrice: 0, });
+    const [formData, setFormData] = useState({ checkInDate: '', checkOutDate: '', flightId: '', accId: '', totalPrice: '', });
 
     useEffect(() => {
         setUserDetails(user);
-    }, []);
+    }, [user]);
 
     useEffect(() => {
         fetch('http://localhost:8086/bookings')
@@ -82,8 +82,24 @@ function Booking() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log("Booking Submitted");
-        alert("Booking Submitted");
+        fetch('http://localhost:8086/bookings', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(formData),
+        })
+            .then((response) => {
+            if (response.ok) {
+                console.log('Booking Added Successfully');
+                alert("Booking Added Successfully");
+            } else {
+                console.error('Error:', response);
+                alert("Booking Not pushed");
+            }
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                alert("Booking Not Added");
+            });
     };
 
     return (
@@ -160,7 +176,7 @@ function Booking() {
                                     <input type='date' value={formData.checkInDate} onChange={handleInputChange} required />
                                 </div>
                                 <div className='booking-form'>
-                                    <label htmlFor='checkOutData'>Check Out Date:</label>
+                                    <label htmlFor='checkOutDate'>Check Out Date:</label>
                                     <input type='date' value={formData.checkOutDate} onChange={handleInputChange} required />
                                 </div>
                                 <div className='booking-form'>
@@ -175,7 +191,12 @@ function Booking() {
                                     <label htmlFor='totalPrice'>Total Price:</label>
                                     <input type='number' value={formData.totalPrice} onChange={handleInputChange}  required />
                                 </div>
-                                <button className='submit-btn' onChange={handleInputChange} type='submit'>Book Now</button>
+                                <div className='booking-form'>
+                                    <label htmlFor='bookingStatus'>Status:</label>
+                                    <input type='text' value={formData.status} onChange={handleInputChange} required />
+                                </div>
+
+                                <button className='submit-btn' type='submit'>Book Now</button>
                             </form>
                         </div>
                     </>
