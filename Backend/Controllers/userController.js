@@ -1,22 +1,22 @@
-import sql from 'mssql'
-import config from '../Db/config.js'
-import bcrypt from 'bcrypt'
-import jwt from 'jsonwebtoken'
+import sql from 'mssql';
+import config from '../Db/config.js';
+import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
 
-// Log in Required
+
+// Login Required Middleware
 export const loginRequired = (req, res, next) => {
     if (req.user) {
         next();
     } else {
-        return res.status(401).json({message: "Unauthorized user...!!!!"});
+        return res.status(401).json({ Message: "Unauthorized user..!!!" });
     }
-};
-
+}
 
 // Registering a user
 export const registerUser = async (req, res) => {
     const { username, email, password } = req.body;
-    const hashedPassword = await bcrypt.hash(Password, 10);
+    const hashedPassword = await bcrypt.hash(password, 10);
     try {
         let pool = await sql.connect(config.sql);
         let result = await pool.request()
@@ -25,41 +25,41 @@ export const registerUser = async (req, res) => {
             .query("SELECT * FROM Users WHERE username = @username OR email = @email");
             const user = result.recordset[0];
             if (user) {
-                res.status(201).json({ Message : "User already exists..!!!!"});
+                res.status(201).json({ Message: "User registered exists..!!!" });
             } else {
-                await pool.request ()
+                await pool.request()
                     .input('username', sql.VarChar, username)
                     .input('email', sql.VarChar, email)
                     .input('password', sql.VarChar, hashedPassword)
-                    .query("INSERT into Users (username, email, password) VALUES (@username, @email, @password) ");
-                res.status(201).json({Message : "User registered successfully.!!!"});
+                    .query("insert into Users (username, email, password) values (@username, @email, @password)");
+                res.status(201).json({ Message: "User registered successfully..!!!" });
             }
     } catch (error) {
-        res.status(500).json({message: `Something went wrong. ${error}`});
+        res.status(404).json({ Message: `Failed to create the user. ${error.message}` });
     } finally {
         sql.close();
     }
-}; 
+}
 
-// Logging in a user
+// Loging in a user
 export const loginUser = async (req, res) => {
     const { username, password } = req.body;
     let pool = await sql.connect(config.sql);
-    let user = await pool.request()
+    let result = await pool.request()
         .input('username', sql.VarChar, username)
-        .query('SELECT * FROM Users WHERE username = @username');
-    const userRecord = user.recordset[0];
-    if (!userRecord) {
-        return res.status(401).json({message: "User does not exist...!!!!"});
+        .query("select * from Users where username = @username");
+    const user = result.recordset[0];
+    if (!user) {
+        res.status(404).json({ Message: "User not found..!!!" });
     } else {
-        if (!bcrypt.compareSync(password, userRecord.password)) {
-            return res.status(401).json({message: "Incorrect credentials...!!!!"});
+        if (!bcrypt.compareSync(password, user.password)) {
+            res.status(404).json({ Message: "Incorrect password..!!!" });
         } else {
             const token = `JWT ${jwt.sign({ username: user.username, email: user.email }, config.jwt_secret)}`;
-            res.status(200).json({ username: user.username, email: user.email, id: user.id, token: token });
+            res.status(200).json({ id: user.id, username: user.username, email: user.email, token: token });
         }
     }
-};
+}
 
 
 // Getting all users
