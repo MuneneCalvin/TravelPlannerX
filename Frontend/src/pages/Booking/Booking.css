@@ -75,6 +75,24 @@ ul li img {
 ul li p {
     white-space: nowrap;
 }
+.side-link {
+    color: var(--dark);
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+}
+.side-link:hover {
+    color: var(--color);
+}
+.log-out {
+    color: red;
+    font-size: 16px;
+    font-weight: 700;
+}
+.log-out:hover {
+    color: var(--dark)
+}
+
 
 /* Main nav */
 .main-nav {
@@ -91,7 +109,6 @@ ul li p {
   }
   
   .booking-container {
-
     margin-left: 20px;
     display: flex;
     flex-wrap: wrap;
@@ -130,3 +147,18 @@ ul li p {
     background-color: var(--hover-bg);
     color: var(--hover-text);
   }
+
+  /* Profile */
+.profile-container {
+  margin-left: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.profile-card {
+  width: 300px;
+  background-color: var(--light-grey);
+  color: var(--dark);
+  padding: 20px;
+  border-radius: 8px;
+}

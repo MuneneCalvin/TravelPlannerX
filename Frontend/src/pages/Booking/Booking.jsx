@@ -6,9 +6,7 @@ import { Context } from '../../context/userContext/Context';
 import userimg from '../../images/user.png'
 import dashboard from '../../images/dashboard.png'
 import reports from '../../images/reports.png'
-// import rewards from '../../images/rewards.png'
 import messages from '../../images/messages.png'
-// import video from '../../images/video-chat.png'
 import projects from '../../images/projects.png'
 import members from '../../images/members.png'
 import setting from '../../images/setting.png'
@@ -17,11 +15,15 @@ import './Booking.css'
 
 function Booking() {
     const navigate = useNavigate();
-
-    const { dispatch } = useContext(Context);
-
+    const { user, dispatch } = useContext(Context);
+    const [userDetails, setUserDetails] = useState([]);
     const [booking, setBooking] = useState([]);
-    
+    const [activeTab, setActiveTab] = useState("bookings");
+
+    useEffect(() => {
+        setUserDetails(user);
+    }, []);
+
     useEffect(() => {
         fetch('http://localhost:8086/bookings')
             .then((response) => response.json())
@@ -29,13 +31,13 @@ function Booking() {
             .catch((error) => console.error(error));
     }, []);
 
-    const handleDelete = (BookingId) => {
-        fetch(`http://localhost:8086/booking/${BookingId}`, {
+    const handleDelete = (bookingId) => {
+        fetch(`http://localhost:8086/booking/${bookingId}`, {
             method: 'DELETE',
         })
             .then((response) => {
                 if (response.ok) {
-                    console.log(`Booking with ID: ${BookingId} deleted`);
+                    console.log(`Booking with ID: ${bookingId} deleted`);
                     alert("Booking Deleted Successfully");
                 } else {
                     console.error('Error:', response);
@@ -59,6 +61,14 @@ function Booking() {
         navigate("/Home");
     }
 
+    const handleMyBookingsClick = () => {
+        setActiveTab("bookings");
+    };
+
+    const handleMyProfileClick = () => {
+        setActiveTab("profile");
+    };
+
     return (
         <div id='Header'>
             <div className="side-nav">
@@ -70,37 +80,53 @@ function Booking() {
                     </div>
                 </div>
                 <ul>
-                    <li><img src={dashboard} /><Link to="/Dashboard">Dashboard</Link></li>
-                    <li><img src={reports} /><Link to="/Booking">My Booking</Link></li>
-                    {/* <li><img src={rewards} /><p>Rewards</p></li> */}
-                    <li><img src={messages} /><Link to="/Contact">Contact Us</Link></li>
-                    {/* <li><img src={video} /><p>Video Chat</p></li> */}
-                    <li><img src={projects} /><Link to="/Gallery">Gallery</Link></li>
-                    <li><img src={members} /><Link to="/Profile">My Profile</Link></li>
-                    <li><img src={setting} /><Link to="/Setting">Settings</Link></li>
+                    <li><img src={dashboard} /><Link to="/" className='side-link'>Dashboard</Link></li>
+                    <li><img src={reports} /><Link onClick={handleMyBookingsClick} className='side-link'>My Bookings</Link></li>
+                    <li><img src={messages} /><Link to="/Contact" className='side-link'>Contact Us</Link></li>
+                    <li><img src={projects} /><Link to="/Gallery" className='side-link'>Gallery</Link></li>
+                    <li><img src={members} /><Link onClick={handleMyProfileClick} className='side-link'>My Profile</Link></li>
+                    <li><img src={setting} /><Link to="/Setting" className='side-link'>Settings</Link></li>
                 </ul>
                 <ul>
-                    <li><img src={logout} /><Link onClick={handleLogout}>Log Out</Link></li>
+                    <li><img src={logout} /><Link onClick={handleLogout} className='log-out'>Log Out</Link></li>
                 </ul>
             </div>
 
             <div className='main-nav'>
-                <h2>My Bookings:</h2>
-                <div className='booking-container'>
-                    {booking.map((booking) => (
-                        <div className='booking-card' key={booking.BookingId}>
-                            <p>Booking ID: {booking.BookingId}</p>
-                            <p>Booking Date: {booking.BookingDate}</p>
-                            <p>Status: {booking.BookingStatus}</p>
-                            <p>Accommodation: {booking.AccId}</p>
-                            <p>Price: {booking.total_price}</p>
-                            <div className='button-container'>
-                                <button onClick={() => handleEdit(booking.BookingId)}>Edit</button>
-                                <button onClick={() => handleDelete(booking.BookingId)}>Delete</button>
-                            </div>
+                {activeTab === "bookings" && (
+                    <>
+                        <h2>My Bookings:</h2>
+                        <div className='booking-container'>
+                            {booking.map((booking) => (
+                                <div className='booking-card' key={booking.BookingId}>
+                                    <p>Booking ID: {booking.BookingId}</p>
+                                    <p>Booking Date: {booking.BookingDate}</p>
+                                    <p>Status: {booking.BookingStatus}</p>
+                                    <p>Accommodation: {booking.AccId}</p>
+                                    <p>Price: {booking.total_price}</p>
+                                    <div className='button-container'>
+                                        <button onClick={() => handleEdit(booking.BookingId)}>Edit</button>
+                                        <button onClick={() => handleDelete(booking.BookingId)}>Delete</button>
+                                    </div>
+                                </div>
+                            ))}
                         </div>
-                    ))}
-                </div>
+                    </>
+                )}
+                {activeTab === "profile" && (
+                    <>
+                        <h2>My Profile:</h2>
+                        <div className='profile-container'>
+                            <img src={userimg} className='profile-img' />
+                        <div className='profile-card'>
+                        <div className='profile-details'>
+                            <h2>{userDetails.userName}</h2>
+                            <p>{userDetails.Email}</p>
+                        </div>
+                        </div>
+                        </div>
+                    </>
+                )}
             </div>
         </div>
     )
