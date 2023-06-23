@@ -15,23 +15,23 @@ export const loginRequired = (req, res, next) => {
 
 // Registering a user
 export const registerUser = async (req, res) => {
-    const { userName, Email, Password } = req.body;
+    const { username, email, password } = req.body;
     const hashedPassword = await bcrypt.hash(Password, 10);
     try {
         let pool = await sql.connect(config.sql);
         let result = await pool.request()
-            .input('userName', sql.VarChar, userName)
-            .input('Email', sql.VarChar, Email)
-            .query("SELECT * FROM Users WHERE userName = @userName OR Email = @Email");
+            .input('username', sql.VarChar, username)
+            .input('email', sql.VarChar, email)
+            .query("SELECT * FROM Users WHERE username = @username OR email = @email");
             const user = result.recordset[0];
             if (user) {
                 res.status(201).json({ Message : "User already exists..!!!!"});
             } else {
                 await pool.request ()
-                    .input('userName', sql.VarChar, userName)
-                    .input('Email', sql.VarChar, Email)
-                    .input('Password', sql.VarChar, hashedPassword)
-                    .query("INSERT into Users (userName, Email, Password) VALUES (@userName, @Email, @Password) ");
+                    .input('username', sql.VarChar, username)
+                    .input('email', sql.VarChar, email)
+                    .input('password', sql.VarChar, hashedPassword)
+                    .query("INSERT into Users (username, email, password) VALUES (@username, @email, @password) ");
                 res.status(201).json({Message : "User registered successfully.!!!"});
             }
     } catch (error) {
@@ -43,20 +43,20 @@ export const registerUser = async (req, res) => {
 
 // Logging in a user
 export const loginUser = async (req, res) => {
-    const { userName, Password } = req.body;
+    const { username, password } = req.body;
     let pool = await sql.connect(config.sql);
     let user = await pool.request()
-        .input('userName', sql.VarChar, userName)
-        .query('SELECT * FROM Users WHERE userName = @userName');
+        .input('username', sql.VarChar, username)
+        .query('SELECT * FROM Users WHERE username = @username');
     const userRecord = user.recordset[0];
     if (!userRecord) {
         return res.status(401).json({message: "User does not exist...!!!!"});
     } else {
-        if (!bcrypt.compareSync(Password, userRecord.Password)) {
+        if (!bcrypt.compareSync(password, userRecord.password)) {
             return res.status(401).json({message: "Incorrect credentials...!!!!"});
         } else {
-            const token = `JWT ${jwt.sign({ username: user.userName, email: user.Email }, config.jwt_secret)}`;
-            res.status(200).json({ email: user.Email, username: user.userName, id: user.id, token: token });
+            const token = `JWT ${jwt.sign({ username: user.username, email: user.email }, config.jwt_secret)}`;
+            res.status(200).json({ username: user.username, email: user.email, id: user.id, token: token });
         }
     }
 };
@@ -94,16 +94,14 @@ export const getUser = async (req, res) => {
 // Updating a user
 export const updateUser = async (req, res) => {
     const { id } = req.params;
-    const { userName, Email, Password } = req.body;
-    const hashedPassword = await bcrypt.hash(Password, 10);
+    const { username, email } = req.body;
     try {
         let pool = await sql.connect(config.sql);
         let user = await pool.request()
             .input('id', sql.Int, id)
-            .input('userName', sql.VarChar, userName)
-            .input('Email', sql.VarChar, Email)
-            .input('Password', sql.VarChar, hashedPassword)
-            .query('UPDATE Users SET userName = @userName, Email = @Email, Password = @Password WHERE id = @id');
+            .input('username', sql.VarChar, username)
+            .input('Email', sql.VarChar, email)
+            .query('UPDATE Users SET username = @username, email = @email WHERE id = @id');
         res.json(user.recordset[0]);
     } catch (error) {
         res.status(500).json({message: `Something went wrong. ${error}`});
