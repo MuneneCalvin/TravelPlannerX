@@ -5,7 +5,7 @@ const DestinationsList = () => {
   const [destinations, setDestinations] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:8087/destinations')
+    fetch('http://localhost:8080/destinations')
       .then((response) => response.json())
       .then((data) => setDestinations(data))
       .catch((error) => console.error(error));

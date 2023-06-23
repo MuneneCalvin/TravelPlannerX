@@ -26,14 +26,14 @@ function Booking() {
     // }, [user]);
 
     useEffect(() => {
-        fetch('http://localhost:8087/bookings?userId=${userDetails.UserId}')
+        fetch('http://localhost:8080/bookings?userId=${userDetails.UserId}')
             .then((response) => response.json())
             .then((data) => setBooking(data))
             .catch((error) => console.error(error));
     }, [user]);
 
     const handleDelete = (bookingId) => {
-        fetch(`http://localhost:8087/booking/${bookingId}`, {
+        fetch(`http://localhost:8080/booking/${bookingId}`, {
             method: 'DELETE',
         })
             .then((response) => {
@@ -80,7 +80,7 @@ function Booking() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        fetch('http://localhost:8087/bookings', {
+        fetch('http://localhost:8080/bookings', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(formData),
@@ -108,8 +108,8 @@ function Booking() {
                 <div className="user">
                     <img src={userimg} className='user-img' />
                     <div className='user-details'>
-                        <h2>{user.userName}</h2>
-                        <p>{user.Email}</p>
+                        <h2>{user.username}</h2>
+                        <p>{user.email}</p>
                     </div>
                 </div>
                 <ul>
@@ -155,8 +155,8 @@ function Booking() {
                             <img src={userimg} className='profile-img' />
                         <div className='profile-card'>
                         <div className='profile-details'>
-                            <h2>{user.userName}</h2>
-                            <p>{user.Email}</p>
+                            <h2>{user.username}</h2>
+                            <p>{user.email}</p>
                         </div>
                         </div>
                         </div>
