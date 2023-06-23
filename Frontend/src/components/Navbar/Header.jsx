@@ -1,18 +1,10 @@
 import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { Context } from '../../context/userContext/Context';
-import { useNavigate } from 'react-router-dom';
 import './Header.css';
 
 function Header() {
-    const navigate = useNavigate();
-
-    const { user, dispatch } = useContext(Context);
-
-    const handleLogout = () => {
-        dispatch({ type: "LOGOUT" });
-        navigate("/Home");
-    }
+    const { user } = useContext(Context);
 
     return (
         <nav className="navbar">
@@ -41,14 +33,11 @@ function Header() {
                                 <li className="nav-item">
                                     <Link to="/Hotels" className="nav-link">Hotels</Link>
                                 </li>
-                                <li>
-                                    <Link to="/Booking" className="nav-link">Booking</Link>
-                                </li>
                                 <li className="nav-item">
                                     <Link to="/Contact" className="nav-link">Contact</Link>
                                 </li>
                                 <li className='nav-item'>
-                                    <Link onClick={handleLogout} className="nav-link">Log Out</Link>
+                                    <Link to="/Booking" className="nav-link">My Profile</Link>
                                 </li>
 
                             </>
