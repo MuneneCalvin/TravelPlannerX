@@ -16,21 +16,21 @@ import './Booking.css'
 function Booking() {
     const navigate = useNavigate();
     const { user, dispatch } = useContext(Context);
-    const [userDetails, setUserDetails] = useState([]);
+    // const [userDetails, setUserDetails] = useState([]);
     const [booking, setBooking] = useState([]);
     const [activeTab, setActiveTab] = useState("bookings");
     const [formData, setFormData] = useState({ bookingDate: '', checkInDate: '', checkOutDate: '', flightId: '', accId: '', totalPrice: '', status: '' });
 
-    useEffect(() => {
-        setUserDetails(user);
-    }, [user]);
+    // useEffect(() => {
+    //     setUserDetails(user);
+    // }, [user]);
 
     useEffect(() => {
-        fetch('http://localhost:8087/bookings')
+        fetch('http://localhost:8087/bookings?userId=${userDetails.UserId}')
             .then((response) => response.json())
             .then((data) => setBooking(data))
             .catch((error) => console.error(error));
-    }, []);
+    }, [user]);
 
     const handleDelete = (bookingId) => {
         fetch(`http://localhost:8087/booking/${bookingId}`, {
@@ -108,8 +108,8 @@ function Booking() {
                 <div className="user">
                     <img src={userimg} className='user-img' />
                     <div className='user-details'>
-                        <h2>Calvin Shawn</h2>
-                        <p>Munenecalcn@gmail.com</p>
+                        <h2>{user.userName}</h2>
+                        <p>{user.Email}</p>
                     </div>
                 </div>
                 <ul>
@@ -155,8 +155,8 @@ function Booking() {
                             <img src={userimg} className='profile-img' />
                         <div className='profile-card'>
                         <div className='profile-details'>
-                            <h2>{userDetails.userName}</h2>
-                            <p>{userDetails.Email}</p>
+                            <h2>{user.userName}</h2>
+                            <p>{user.Email}</p>
                         </div>
                         </div>
                         </div>
