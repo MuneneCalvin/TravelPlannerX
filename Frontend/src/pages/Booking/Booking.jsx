@@ -19,21 +19,21 @@ function Booking() {
     const [userDetails, setUserDetails] = useState([]);
     const [booking, setBooking] = useState([]);
     const [activeTab, setActiveTab] = useState("bookings");
-    const [formData, setFormData] = useState({ checkInDate: '', checkOutDate: '', flightId: '', accId: '', totalPrice: '', });
+    const [formData, setFormData] = useState({ bookingDate: '', checkInDate: '', checkOutDate: '', flightId: '', accId: '', totalPrice: '', status: '' });
 
     useEffect(() => {
         setUserDetails(user);
     }, [user]);
 
     useEffect(() => {
-        fetch('http://localhost:8086/bookings')
+        fetch('http://localhost:8087/bookings')
             .then((response) => response.json())
             .then((data) => setBooking(data))
             .catch((error) => console.error(error));
     }, []);
 
     const handleDelete = (bookingId) => {
-        fetch(`http://localhost:8086/booking/${bookingId}`, {
+        fetch(`http://localhost:8087/booking/${bookingId}`, {
             method: 'DELETE',
         })
             .then((response) => {
@@ -75,14 +75,12 @@ function Booking() {
     };
 
     const handleInputChange = (event) => {
-        const { name, value } = event.target;
-        setFormData((prevFormData) => ({...prevFormData, [name]: value,
-        }));
+        setFormData({...formData,[event.target.name]: event.target.value});
     };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        fetch('http://localhost:8086/bookings', {
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        fetch('http://localhost:8087/bookings', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(formData),
@@ -100,6 +98,8 @@ function Booking() {
                 console.error('Error:', error);
                 alert("Booking Not Added");
             });
+
+            setFormData({ BookingDate: '', checkInDate: '', checkOutDate: '', flightId: '', accId: '', totalPrice: '', status: '' })
     };
 
     return (
@@ -134,7 +134,8 @@ function Booking() {
                                 <div className='booking-card' key={booking.BookingId}>
                                     <p>Booking ID: {booking.BookingId}</p>
                                     <p>Booking Date: {booking.BookingDate}</p>
-                                    <p>Status: {booking.BookingStatus}</p>
+                                    <p>Status: {booking.status}</p>
+                                    <p>Flight: {booking.flightId}</p>
                                     <p>Accommodation: {booking.AccId}</p>
                                     <p>Price: {booking.total_price}</p>
                                     <div className='button-container'>
@@ -169,31 +170,31 @@ function Booking() {
                             <form className='booking-form-card' onSubmit={handleSubmit}>
                                 <div className='booking-form'>
                                     <label>Booking Date:</label>
-                                    <input type='date' value={formData.bookingId} onChange={handleInputChange} required />
+                                    <input type='date' id='BookingDate' name='BookingDate' value={formData.BookingDate} onChange={handleInputChange} />
                                 </div>
                                 <div className='booking-form'>
                                     <label htmlFor='checkInDate'>Check In Date:</label>
-                                    <input type='date' value={formData.checkInDate} onChange={handleInputChange} required />
+                                    <input type='date' id='check_in_date' name='check_in_date' value={formData.check_in_date} onChange={handleInputChange} />
                                 </div>
                                 <div className='booking-form'>
                                     <label htmlFor='checkOutDate'>Check Out Date:</label>
-                                    <input type='date' value={formData.checkOutDate} onChange={handleInputChange} required />
+                                    <input type='date' id='check_out_date' name='check_out_date' value={formData.check_out_date} onChange={handleInputChange} />
                                 </div>
                                 <div className='booking-form'>
                                     <label htmlFor='flightId'>Flight Id:</label>
-                                    <input type='number' value={formData.flightId} onChange={handleInputChange} required />
+                                    <input type='number' id='flightId' name='flightId' value={formData.flightId} onChange={handleInputChange} />
                                 </div>
                                 <div className='booking-form'>
                                     <label htmlFor='accId'>Accommodation Id:</label>
-                                    <input type='number' value={formData.accId} onChange={handleInputChange} required />
+                                    <input type='number' id='AccId' name='AccId' value={formData.AccId} onChange={handleInputChange} />
                                 </div>
                                 <div className='booking-form'>
                                     <label htmlFor='totalPrice'>Total Price:</label>
-                                    <input type='number' value={formData.totalPrice} onChange={handleInputChange}  required />
+                                    <input type='number' id='total_price' name='total_price' value={formData.total_price} onChange={handleInputChange}  />
                                 </div>
                                 <div className='booking-form'>
                                     <label htmlFor='bookingStatus'>Status:</label>
-                                    <input type='text' value={formData.status} onChange={handleInputChange} required />
+                                    <input type='text' id='status' name='status' value={formData.status} onChange={handleInputChange} />
                                 </div>
 
                                 <button className='submit-btn' type='submit'>Book Now</button>

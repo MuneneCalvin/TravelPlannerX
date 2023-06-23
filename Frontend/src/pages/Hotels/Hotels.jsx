@@ -4,7 +4,7 @@ const DestinationsList = () => {
   const [hotels, setHotels] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:8086/hotels')
+    fetch('http://localhost:8087/hotels')
       .then((response) => response.json())
       .then((data) => setHotels(data))
       .catch((error) => console.error(error));
@@ -12,7 +12,7 @@ const DestinationsList = () => {
 
   const handleBookNow = (destination) => {
     // Send the booking data to the database
-    fetch('http://localhost:8086/bookings', {
+    fetch('http://localhost:8087/bookings', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

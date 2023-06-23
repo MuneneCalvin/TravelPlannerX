@@ -23,7 +23,7 @@ export default function Login() {
     });
 
     const onSubmit = (data) => {
-        Axios.post('http://localhost:8086/login', data)
+        Axios.post('http://localhost:8087/login', data)
             .then(({ data }) => {
                 if (data.token) {
                     dispatch({ type: "LOGIN_SUCCESS", payload: data });

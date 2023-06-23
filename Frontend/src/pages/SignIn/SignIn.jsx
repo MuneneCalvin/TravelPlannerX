@@ -19,7 +19,7 @@ export default function Login() {
     });
 
     const onSubmit = (data) => {
-        Axios.post('http://localhost:8086/register', data)
+        Axios.post('http://localhost:8087/register', data)
         .then((response) => {
             response.data.message && alert(response.data.message);
             navigate('/login');
