@@ -1,4 +1,84 @@
 import { useState, useEffect } from 'react';
+
+const DestinationsList = () => {
+  const [hotels, setHotels] = useState([]);
+
+  useEffect(() => {
+    fetch('http://localhost:8086/hotels')
+      .then((response) => response.json())
+      .then((data) => setHotels(data))
+      .catch((error) => console.error(error));
+  }, []);
+
+  const handleBookNow = (destination) => {
+    // Send the booking data to the database
+    fetch('http://localhost:8086/bookings', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(destination),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        // Booking successful, show alert
+        alert('Booking successful!');
+        console.log('Booking data:', data);
+      })
+      .catch((error) => {
+        // Error occurred while booking, show alert
+        alert('Booking failed. Please try again.');
+        console.error(error);
+      });
+  };
+
+  return (
+    <main>
+      <header id='destinations' className="flex header-sm">
+        <div className="container">
+          <div className="header-title">
+            <h1>Book Your Destination:</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus rerum maxime enim odit illum in molestias beatae doloremque, ratione optio.</p>
+          </div>
+        </div>
+      </header>
+
+      <div id='Destination' className="destinations-container">
+        {hotels.map((hotel, index) => (
+          <div key={index} className="destination-card">
+            <img src={hotel.image_url} alt={hotel.AccName} />
+            <h2>{hotel.AccName}</h2>
+            <p>{hotel.Description}</p>
+            <p>Phone: {hotel.phone_number}</p>
+            <p>Price: ${hotel.AccPrice}</p>
+            <button className='book-now-btn' onClick={() => handleBookNow(hotel)}>Book Now</button>
+          </div>
+        ))}
+      </div>
+    </main>
+  );
+}
+
+export default DestinationsList;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*import { useState, useEffect } from 'react';
 import './Hotels.css';
 
 function Hotels() {
@@ -100,3 +180,4 @@ function Hotels() {
 }
 
 export default Hotels;
+*/

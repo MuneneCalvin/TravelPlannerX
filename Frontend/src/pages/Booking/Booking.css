@@ -162,3 +162,18 @@ ul li p {
   padding: 20px;
   border-radius: 8px;
 }
+
+/* Booking Form */
+.booking-form-container {
+  margin-left: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.booking-form-card {
+  width: 500px;
+  background-color: var(--light-grey);
+  color: var(--dark);
+  padding: 20px;
+  border-radius: 8px;
+}

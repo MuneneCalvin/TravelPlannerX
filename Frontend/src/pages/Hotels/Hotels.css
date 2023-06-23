@@ -1,4 +1,4 @@
-:root{
+/* :root{
     --green: #1ec6b6;
     --light-grey: #f7f7f7;
     --dark: #0e1010;
@@ -65,7 +65,7 @@
   transform: scale(1.05);
 }
 
-/* Hotel Card */
+
 .hotel {
   display: flex;
   flex-wrap: wrap;
@@ -117,4 +117,4 @@
 .hotel-card button:hover {
   background: var(--green);
   color: white;
-}
+} */

@@ -19,6 +19,7 @@ function Booking() {
     const [userDetails, setUserDetails] = useState([]);
     const [booking, setBooking] = useState([]);
     const [activeTab, setActiveTab] = useState("bookings");
+    const [formData, setFormData] = useState({ checkInDate: '', checkOutDate: '', flightId: '', accId: '', totalPrice: 0, });
 
     useEffect(() => {
         setUserDetails(user);
@@ -69,6 +70,22 @@ function Booking() {
         setActiveTab("profile");
     };
 
+    const handleBooking = () => {
+        setActiveTab("Booking");
+    };
+
+    const handleInputChange = (event) => {
+        const { name, value } = event.target;
+        setFormData((prevFormData) => ({...prevFormData, [name]: value,
+        }));
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log("Booking Submitted");
+        alert("Booking Submitted");
+    };
+
     return (
         <div id='Header'>
             <div className="side-nav">
@@ -80,10 +97,10 @@ function Booking() {
                     </div>
                 </div>
                 <ul>
-                    <li><img src={dashboard} /><Link to="/" className='side-link'>Dashboard</Link></li>
+                    <li><img src={dashboard} /><Link onClick={handleBooking} className='side-link'>Book Now</Link></li>
                     <li><img src={reports} /><Link onClick={handleMyBookingsClick} className='side-link'>My Bookings</Link></li>
                     <li><img src={messages} /><Link to="/Contact" className='side-link'>Contact Us</Link></li>
-                    <li><img src={projects} /><Link to="/Gallery" className='side-link'>Gallery</Link></li>
+                    <li><img src={projects} /><Link to="/About" className='side-link'>About Us</Link></li>
                     <li><img src={members} /><Link onClick={handleMyProfileClick} className='side-link'>My Profile</Link></li>
                     <li><img src={setting} /><Link to="/Setting" className='side-link'>Settings</Link></li>
                 </ul>
@@ -113,6 +130,7 @@ function Booking() {
                         </div>
                     </>
                 )}
+                
                 {activeTab === "profile" && (
                     <>
                         <h2>My Profile:</h2>
@@ -124,6 +142,41 @@ function Booking() {
                             <p>{userDetails.Email}</p>
                         </div>
                         </div>
+                        </div>
+                    </>
+                )}
+
+                {activeTab === "Booking" && (
+                    <>
+                        <h2>Booking:</h2>
+                        <div className='booking-form-container'>
+                            <form className='booking-form-card' onSubmit={handleSubmit}>
+                                <div className='booking-form'>
+                                    <label>Booking Date:</label>
+                                    <input type='date' value={formData.bookingId} onChange={handleInputChange} required />
+                                </div>
+                                <div className='booking-form'>
+                                    <label htmlFor='checkInDate'>Check In Date:</label>
+                                    <input type='date' value={formData.checkInDate} onChange={handleInputChange} required />
+                                </div>
+                                <div className='booking-form'>
+                                    <label htmlFor='checkOutData'>Check Out Date:</label>
+                                    <input type='date' value={formData.checkOutDate} onChange={handleInputChange} required />
+                                </div>
+                                <div className='booking-form'>
+                                    <label htmlFor='flightId'>Flight Id:</label>
+                                    <input type='number' value={formData.flightId} onChange={handleInputChange} required />
+                                </div>
+                                <div className='booking-form'>
+                                    <label htmlFor='accId'>Accommodation Id:</label>
+                                    <input type='number' value={formData.accId} onChange={handleInputChange} required />
+                                </div>
+                                <div className='booking-form'>
+                                    <label htmlFor='totalPrice'>Total Price:</label>
+                                    <input type='number' value={formData.totalPrice} onChange={handleInputChange}  required />
+                                </div>
+                                <button className='submit-btn' onChange={handleInputChange} type='submit'>Book Now</button>
+                            </form>
                         </div>
                     </>
                 )}
