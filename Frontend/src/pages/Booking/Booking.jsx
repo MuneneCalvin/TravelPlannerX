@@ -18,7 +18,7 @@ import './Booking.css'
 function Booking() {
     const navigate = useNavigate();
 
-    const { user, dispatch } = useContext(Context);
+    const { dispatch } = useContext(Context);
 
     const [booking, setBooking] = useState([]);
     
