@@ -2,10 +2,12 @@ import express, { urlencoded } from "express";
 import config from "./Db/config.js";
 import Routes from "./Routes/Routes.js";
 import jwt  from "jsonwebtoken";
+import bodyParser from "body-parser";
 import cors from "cors";
 
 
 const app = express();
+app.use(bodyParser.json());
 app.use(cors());
 
 // Middleware
