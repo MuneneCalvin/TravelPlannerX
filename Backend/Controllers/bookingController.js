@@ -97,3 +97,19 @@ export const deleteBooking = async (req, res) => {
         sql.close();
     }
 };
+
+// Getting all bookings by user
+export const getBookingsByUser = async (req, res) => {
+    try {
+        const { id } = req.params;
+        let pool = await sql.connect(config.sql);
+        let bookings = await pool.request()
+            .input("id", sql.Int, id)
+            .query("SELECT * FROM Bookings WHERE UserId = @id");
+        res.status(200).json(bookings.recordset);
+    } catch (error) {
+        res.status(201).json({ Message: `Error while getting Bookings...!!!! ${error.message}` });
+    } finally {
+        sql.close();
+    }
+}
