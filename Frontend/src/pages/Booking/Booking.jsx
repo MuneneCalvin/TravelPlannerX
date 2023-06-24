@@ -132,8 +132,8 @@ function Booking() {
                                     {/* <p>Booking ID: {booking.BookingId}</p> */}
                                     <p>Booking Date: {booking.BookingDate}</p>
                                     <p>Status: {booking.status}</p>
-                                    <p>Flight: {booking.FlightId}</p>
-                                    <p>Accommodation: {booking.AccId}</p>
+                                    <p>Flight Id: {booking.FlightId}</p>
+                                    <p>Accommodation Id: {booking.AccId}</p>
                                     <p>Price: {booking.total_price}</p>
                                     <div className='button-container'>
                                         <button onClick={() => handleEdit(booking.BookingId)}>Edit</button>
