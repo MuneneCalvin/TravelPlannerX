@@ -103,8 +103,10 @@ ul li p {
   }
   
   .main-nav h2 {
+    color: var(--hover-text);
+    text-align: center;
     font-size: 24px;
-    font-weight: bold;
+    font-weight: 600;
     margin-bottom: 10px;
   }
   
@@ -164,6 +166,7 @@ ul li p {
 }
 
 /* Booking Form */
+
 .booking-form-container {
   margin-left: 20px;
   display: flex;
@@ -172,8 +175,105 @@ ul li p {
 }
 .booking-form-card {
   width: 500px;
-  background-color: var(--light-grey);
+  background: #5C258D;
+  background: -webkit-linear-gradient(to right, #4389A2, #5C258D);
+  background: linear-gradient(to right, #4389A2, #5C258D);
   color: var(--dark);
-  padding: 20px;
+  padding: 40px;
   border-radius: 8px;
+  
 }
+.booking-form{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.booking-form label {
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+}
+.input-field {
+  max-width: 290px;
+  background-color: grey;
+  color: #242424;
+  padding: .15rem .5rem;
+  min-height: 40px;
+  border-radius: 4px;
+  outline: none;
+  border: none;
+  line-height: 1;
+  box-shadow: 0px 10px 20px -18px;
+}
+
+input:focus {
+  border-bottom: 2px solid #5b5fc7;
+  border-radius: 4px 4px 2px 2px;
+}
+
+input:hover {
+  outline: 1px solid var(--color);
+}
+
+.btn-submit {
+  margin-top: 55px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  background: #183153;
+  font-family: "Montserrat", sans-serif;
+  box-shadow: 0px 6px 24px 0px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  border: none;
+ }
+ 
+.btn-submit:after {
+  content: " ";
+  width: 0%;
+  height: 100%;
+  background: #FFD401;
+  position: absolute;
+  transition: all 0.4s ease-in-out;
+  right: 0;
+ }
+ 
+.btn-submit:hover::after {
+  right: auto;
+  left: 0;
+  width: 100%;
+ }
+ 
+.btn-submit span {
+  text-align: center;
+  text-decoration: none;
+  width: 100%;
+  padding: 10px 15px;
+  color: #fff;
+  font-size: 1.125em;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  z-index: 20;
+  transition: all 0.3s ease-in-out;
+ }
+ 
+.btn-submit:hover span {
+  color: #183153;
+  animation: scaleUp 0.3s ease-in-out;
+ }
+ 
+ @keyframes scaleUp {
+  0% {
+   transform: scale(1);
+  }
+ 
+  50% {
+   transform: scale(0.95);
+  }
+ 
+  100% {
+   transform: scale(1);
+  }
+ }
+ 

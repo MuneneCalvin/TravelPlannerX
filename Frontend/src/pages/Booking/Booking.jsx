@@ -19,7 +19,7 @@ function Booking() {
     const { user, dispatch } = useContext(Context);
     const [booking, setBooking] = useState([]);
     const [activeTab, setActiveTab] = useState("bookings");
-    const [formData, setFormData] = useState({ bookingDate: '', checkInDate: '', checkOutDate: '', flightId: '', accId: '', totalPrice: '', status: '' });
+    const [formData, setFormData] = useState({ UserId: '', bookingDate: '', checkInDate: '', checkOutDate: '', flightId: '', accId: '', totalPrice: '', status: '' });
 
     useEffect(() => {
             fetch(`http://localhost:8080/bookings/${user.id}`)
@@ -96,7 +96,7 @@ function Booking() {
                 alert("Booking Not Added");
             });
 
-            setFormData({ BookingDate: '', checkInDate: '', checkOutDate: '', flightId: '', accId: '', totalPrice: '', status: '' })
+            setFormData({ UserId: '', BookingDate: '', checkInDate: '', checkOutDate: '', flightId: '', accId: '', totalPrice: '', status: '' })
     };
 
     return (
@@ -129,7 +129,7 @@ function Booking() {
                         <div className='booking-container'>
                             {booking.map((booking) => (
                                 <div className='booking-card' key={booking.BookingId}>
-                                    <p>Booking ID: {booking.BookingId}</p>
+                                    {/* <p>Booking ID: {booking.BookingId}</p> */}
                                     <p>Booking Date: {booking.BookingDate}</p>
                                     <p>Status: {booking.status}</p>
                                     <p>Flight: {booking.FlightId}</p>
@@ -160,35 +160,39 @@ function Booking() {
                         <div className='booking-form-container'>
                             <form className='booking-form-card' onSubmit={handleSubmit}>
                                 <div className='booking-form'>
+                                    <label htmlFor='UserId'>User Id:</label>
+                                    <input className='input-field' type='number' id='UserId' name='UserId' value={formData.UserId} onChange={handleInputChange} required />
+                                </div>
+                                <div className='booking-form'>
                                     <label>Booking Date:</label>
-                                    <input type='date' id='BookingDate' name='BookingDate' value={formData.BookingDate} onChange={handleInputChange} />
+                                    <input className='input-field' type='date' id='BookingDate' name='BookingDate' value={formData.BookingDate} onChange={handleInputChange} />
                                 </div>
                                 <div className='booking-form'>
                                     <label htmlFor='checkInDate'>Check In Date:</label>
-                                    <input type='date' id='check_in_date' name='check_in_date' value={formData.check_in_date} onChange={handleInputChange} required />
+                                    <input className='input-field' type='date' id='check_in_date' name='check_in_date' value={formData.check_in_date} onChange={handleInputChange} required />
                                 </div>
                                 <div className='booking-form'>
                                     <label htmlFor='checkOutDate'>Check Out Date:</label>
-                                    <input type='date' id='check_out_date' name='check_out_date' value={formData.check_out_date} onChange={handleInputChange} required />
+                                    <input className='input-field' type='date' id='check_out_date' name='check_out_date' value={formData.check_out_date} onChange={handleInputChange} required />
                                 </div>
                                 <div className='booking-form'>
                                     <label htmlFor='flightId'>Flight Id:</label>
-                                    <input type='number' id='flightId' name='FlightId' value={formData.FlightId} onChange={handleInputChange} required />
+                                    <input className='input-field' type='number' id='flightId' name='FlightId' value={formData.FlightId} onChange={handleInputChange} required />
                                 </div>
                                 <div className='booking-form'>
                                     <label htmlFor='accId'>Accommodation Id:</label>
-                                    <input type='number' id='AccId' name='AccId' value={formData.AccId} onChange={handleInputChange} required />
+                                    <input className='input-field' type='number' id='AccId' name='AccId' value={formData.AccId} onChange={handleInputChange} required />
                                 </div>
                                 <div className='booking-form'>
                                     <label htmlFor='totalPrice'>Total Price:</label>
-                                    <input type='number' id='total_price' name='total_price' value={formData.total_price} onChange={handleInputChange} required  />
+                                    <input className='input-field' type='number' id='total_price' name='total_price' value={formData.total_price} onChange={handleInputChange} required  />
                                 </div>
                                 <div className='booking-form'>
                                     <label htmlFor='bookingStatus'>Status:</label>
-                                    <input type='text' id='status' name='status' value={formData.status} onChange={handleInputChange} required />
+                                    <input className='input-field' type='text' id='status' name='status' value={formData.status} onChange={handleInputChange} required />
                                 </div>
 
-                                <button className='submit-btn' type='submit'>Book Now</button>
+                                <button className='btn-submit' type='submit'><span>Book Now</span></button>
                             </form>
                         </div>
                     </>
