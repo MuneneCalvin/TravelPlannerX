@@ -39,9 +39,9 @@ export const getBooking = async (req, res) => {
 // Creating a booking
 export const createBooking = async (req, res) => {
     try {
-        const { BookingDate, check_in_date, check_out_date, status, total_price, FlightId, AccId } = req.body;
+        const { BookingDate, check_in_date, check_out_date, status, total_price, FlightId, AccId, UserId } = req.body;
         let pool = await sql.connect(config.sql);
-        const query = `INSERT INTO Bookings (BookingDate, check_in_date, check_out_date, status, total_price, FlightId, AccId) VALUES (@BookingDate, @check_in_date, @check_out_date, @status, @total_price, @FlightId, @AccId)`;
+        const query = `INSERT INTO Bookings (BookingDate, check_in_date, check_out_date, status, total_price, FlightId, AccId, UserId) VALUES (@BookingDate, @check_in_date, @check_out_date, @status, @total_price, @FlightId, @AccId, @UserId)`;
         let booking = await pool.request()
             .input("BookingDate", sql.Date, BookingDate)
             .input("check_in_date", sql.Date, check_in_date)
@@ -50,6 +50,7 @@ export const createBooking = async (req, res) => {
             .input("total_price", sql.Int, total_price)
             .input("FlightId", sql.Int, FlightId)
             .input("AccId", sql.Int, AccId)
+            .input("UserId", sql.Int, UserId)
             await booking.query(query);
         res.status(201).json({ Message: `Booking was created successfully..!!!!` });
     } catch (error) {
@@ -109,6 +110,30 @@ export const getBookingsByUser = async (req, res) => {
         res.status(200).json(bookings.recordset);
     } catch (error) {
         res.status(201).json({ Message: `Error while getting Bookings...!!!! ${error.message}` });
+    } finally {
+        sql.close();
+    }
+}
+
+// Creating a booking by user
+export const createBookingByUser = async (req, res) => {
+    try {
+        const { BookingDate, check_in_date, check_out_date, status, total_price, FlightId, AccId, UserId } = req.body;
+        let pool = await sql.connect(config.sql);
+        const query = `INSERT INTO Bookings (BookingDate, check_in_date, check_out_date, status, total_price, FlightId, AccId, UserId) VALUES (@BookingDate, @check_in_date, @check_out_date, @status, @total_price, @FlightId, @AccId, @UserId)`;
+        let booking = await pool.request()
+            .input("BookingDate", sql.Date, BookingDate)
+            .input("check_in_date", sql.Date, check_in_date)
+            .input("check_out_date", sql.Date, check_out_date)
+            .input("status", sql.VarChar, status)
+            .input("total_price", sql.Int, total_price)
+            .input("FlightId", sql.Int, FlightId)
+            .input("AccId", sql.Int, AccId)
+            .input("UserId", sql.Int, UserId)
+            await booking.query(query);
+        res.status(201).json({ Message: `Booking was created successfully..!!!!` });
+    } catch (error) {
+        res.status(500).json({ Message: `Error while creating Booking ${error.message}` });
     } finally {
         sql.close();
     }

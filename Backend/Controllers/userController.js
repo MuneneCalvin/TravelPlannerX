@@ -56,6 +56,7 @@ export const loginUser = async (req, res) => {
             res.status(404).json({ Message: "Incorrect password..!!!" });
         } else {
             const token = `JWT ${jwt.sign({ username: user.username, email: user.email }, config.jwt_secret)}`;
+            req.user = user;
             res.status(200).json({ id: user.id, username: user.username, email: user.email, token: token });
         }
     }
