@@ -9,6 +9,7 @@ background: #009FFF;
 background: -webkit-linear-gradient(to right, #ec2F4B, #009FFF);
 background: linear-gradient(to right, #ec2F4B, #009FFF); 
 }
+
 .Form {
     display: flex;
     flex-direction: column;
@@ -69,3 +70,4 @@ form input:not([type="submit"]):focus {
     color: rgb(255, 255, 255);
     cursor: pointer;
 }
+
