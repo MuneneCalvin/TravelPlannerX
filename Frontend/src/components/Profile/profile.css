@@ -1,38 +1,59 @@
-.profile-image {
-    display: flex;
-    justify-content: center;
-    width: 50%;
-    height: 100%;
-    /* margin-bottom: 20px; */
+.profile {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
 }
-.image  {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    object-fit: cover;
-  }
-  
-  .profile .info {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 50%;
-    height: 100%;
-    align-items: center;
-    padding-left: 20px;
-  }
-  
-  .uploadButton {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 4px;
-    border: none;
-    font-size: 16px;
-  }
-  
-  .uploadButton:hover {
-    background-color: #45a049;
-  }
-  
+
+.profile-div {
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-info {
+  margin-left: 20px;
+}
+
+h4 {
+  margin: 0;
+}
+
+.upload {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.uploadButton {
+  height: 200px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  cursor: pointer;
+  border: 2px dashed #cacaca;
+  background-color: rgba(255, 255, 255, 1);
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0px 48px 35px -48px rgba(0, 0, 0, 0.1);
+}
+
+.uploadButton .icon svg {
+  height: 80px;
+  fill: rgba(75, 85, 99, 1);
+}
+
+.uploadButton .text span {
+  font-weight: 400;
+  color: rgba(75, 85, 99, 1);
+}
