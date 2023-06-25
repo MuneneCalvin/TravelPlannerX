@@ -195,7 +195,7 @@ function Booking() {
                                     <input className='input-field' type='text' id='status' name='status' value={formData.status} onChange={handleInputChange} required />
                                 </div>
 
-                                <button className='btn-submit' type='submit'><span>Book Now</span></button>
+                                <Link to='/payment' className='btn-submit' type='submit' ><span>Book Now</span></Link>
                             </form>
                         </div>
                     </>

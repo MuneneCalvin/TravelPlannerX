@@ -1,4 +1,7 @@
 .modal {
+  margin: auto;
+  margin-top: 50px;
+  margin-bottom: 35px;
     width: fit-content;
     height: fit-content;
     background: #FFFFFF;
