@@ -32,33 +32,32 @@ export default function Login() {
     return (
         <main>
             <div>
-            <form className="form-register" onSubmit={handleSubmit(onSubmit)}>
-      <div className="title">Welcome</div>
-      <div className="subtitle">Lets create your account!</div>
-
-      <div className="input-container ic1">
-        <input placeholder="" type="text" className="input" id="username" {...register("username")} required />
-        <div className="cut"></div>
-        <label className="iLabel" htmlFor="Full Name">Full Name</label>
+              <div className="container">
+  <form className="card" onSubmit={handleSubmit(onSubmit)}>
+      <a className="singup">Welcome</a>
+      <p className='signup'>Lets create your account!</p>
+      <div className="inputBox1">
+          <input type="text" {...register("username")} required />
+          <span className="user">Full Names</span>
       </div>
-      <p className='error'>{errors.username?.message}</p>
+      <p className='error'>{errors.password?.message}</p>
 
-      <div className="input-container ic2">
-        <input placeholder="" type="text" className="input" id="email" {...register("email")} required />
-        <div className="cut"></div>
-        <label className="iLabel" htmlFor="email">Email</label>
+      <div className="inputBox">
+          <input type="text" {...register("email")} required />
+          <span>Email</span>
       </div>
-        <p className='error'>{errors.email?.message}</p>
+      <p className='error'>{errors.email?.message}</p>
 
-      <div className="input-container ic2">
-        <input placeholder="" type="password" className="input" id="password" {...register("password")} />
-        <div className="cut cut-short"></div>
-        <label className="iLabel" htmlFor="password">Password</label>
+      <div className="inputBox">
+          <input type="password" {...register("password")} required />
+          <span>Password</span>
       </div>
-        <p className='error'>{errors.password?.message}</p>
+      <p className='error'>{errors.password?.message}</p>
 
-      <button className="submit" type="submit">submit</button>
-</form>
+      <button className="enter" type="submit">Submit</button>
+
+  </form>
+</div>
             </div>
         </main>
     )
