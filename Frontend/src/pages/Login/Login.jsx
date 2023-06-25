@@ -1,5 +1,5 @@
 import { useForm} from 'react-hook-form'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import Axios from 'axios'
@@ -37,29 +37,47 @@ export default function Login() {
 
     return (
         <main>
-            <div className='body-back'>
-                <form className='Form' onSubmit={handleSubmit(onSubmit)}>
-                    <p className='loginBanner'>Welcome Back</p>
+            <div className="form-container">
+	<p className="title">Login</p>
+	<form className="form" onSubmit={handleSubmit(onSubmit)}>
+		<div className="input-group">
+			<label htmlFor="username">Full Names</label>
+			<input type="text" name="username" id="username" {...register("username")} placeholder="" required />
+		</div>
+        <p className='error'>{errors.username?.message}</p>
 
-                    <div className='input-thing'>
-                    <svg className="input-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                        <path d="M13.106 7.222c0-2.967-2.249-5.032-5.482-5.032-3.35 0-5.646 2.318-5.646 5.702 0 3.493 2.235 5.708 5.762 5.708.862 0 1.689-.123 2.304-.335v-.862c-.43.199-1.354.328-2.29.328-2.926 0-4.813-1.88-4.813-4.798 0-2.844 1.921-4.881 4.594-4.881 2.735 0 4.608 1.688 4.608 4.156 0 1.682-.554 2.769-1.416 2.769-.492 0-.772-.28-.772-.76V5.206H8.923v.834h-.11c-.266-.595-.881-.964-1.6-.964-1.4 0-2.378 1.162-2.378 2.823 0 1.737.957 2.906 2.379 2.906.8 0 1.415-.39 1.709-1.087h.11c.081.67.703 1.148 1.503 1.148 1.572 0 2.57-1.415 2.57-3.643zm-7.177.704c0-1.197.54-1.907 1.456-1.907.93 0 1.524.738 1.524 1.907S8.308 9.84 7.371 9.84c-.895 0-1.442-.725-1.442-1.914z"></path>
-                    </svg>
-                        <input type="text" placeholder="Username" {...register("username")} required />
-                    </div>
-                    <p className='error'>{errors.username?.message}</p>
-
-                    <div className='input-thing'>
-                    <svg className="input-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                        <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"></path>
-                    </svg>
-                        <input type="password" placeholder="Password" {...register("password")} required />
-                    </div>
-                    <p className='error'>{errors.password?.message}</p>
-
-                    <input className='submitBtn' type="submit" value='Submit' />
-                </form>
-            </div>
+		<div className="input-group">
+			<label htmlFor="password">Password</label>
+			<input type="password" name="password" id="password" placeholder="" {...register("password")} />
+			<div className="forgot">
+				<a rel="noopener noreferrer" href="#">Forgot Password ?</a>
+			</div>
+		</div>
+        <p className='error'>{errors.password?.message}</p>
+        
+		<button className="sign" type="submit" value="Submit">Sign in</button>
+	</form>
+	<div className="social-message">
+		<div className="line"></div>
+		<p className="message">Login with social accounts</p>
+		<div className="line"></div>
+	</div>
+	<div className="social-icons">
+		<button aria-label="Log in with Google" className="icon">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" className="w-5 h-5 fill-current">
+				<path d="M16.318 13.714v5.484h9.078c-0.37 2.354-2.745 6.901-9.078 6.901-5.458 0-9.917-4.521-9.917-10.099s4.458-10.099 9.917-10.099c3.109 0 5.193 1.318 6.38 2.464l4.339-4.182c-2.786-2.599-6.396-4.182-10.719-4.182-8.844 0-16 7.151-16 16s7.156 16 16 16c9.234 0 15.365-6.49 15.365-15.635 0-1.052-0.115-1.854-0.255-2.651z"></path>
+			</svg>
+		</button>
+		<button aria-label="Log in with Twitter" className="icon">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" className="w-5 h-5 fill-current">
+				<path d="M31.937 6.093c-1.177 0.516-2.437 0.871-3.765 1.032 1.355-0.813 2.391-2.099 2.885-3.631-1.271 0.74-2.677 1.276-4.172 1.579-1.192-1.276-2.896-2.079-4.787-2.079-3.625 0-6.563 2.937-6.563 6.557 0 0.521 0.063 1.021 0.172 1.495-5.453-0.255-10.287-2.875-13.52-6.833-0.568 0.964-0.891 2.084-0.891 3.303 0 2.281 1.161 4.281 2.916 5.457-1.073-0.031-2.083-0.328-2.968-0.817v0.079c0 3.181 2.26 5.833 5.26 6.437-0.547 0.145-1.131 0.229-1.724 0.229-0.421 0-0.823-0.041-1.224-0.115 0.844 2.604 3.26 4.5 6.14 4.557-2.239 1.755-5.077 2.801-8.135 2.801-0.521 0-1.041-0.025-1.563-0.088 2.917 1.86 6.36 2.948 10.079 2.948 12.067 0 18.661-9.995 18.661-18.651 0-0.276 0-0.557-0.021-0.839 1.287-0.917 2.401-2.079 3.281-3.396z"></path>
+			</svg>
+		</button>
+	</div>
+	<p className="signup">Dont have an account? <br />
+		<Link to='/signin' >Sign Up</Link>
+	</p>
+</div>
         </main>
     )
 }
