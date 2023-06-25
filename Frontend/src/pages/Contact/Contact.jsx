@@ -1,7 +1,12 @@
+import { useForm } from '@formspree/react';
 import './Contact.css'
 
 
 function Contact() {
+    const [state, handleSubmit] = useForm("mdornagq");
+        if (state.succeeded) {
+            return <p>Thanks for you Message!</p>;
+        }
     return (
 
         <main>
@@ -23,11 +28,11 @@ function Contact() {
 
                 <div className = "contact-row">
                     <div className = "contact-left">
-                        <form className = "contact-form">
+                        <form className = "contact-form" onSubmit={handleSubmit}>
                             <input type = "text" className = "form-control" placeholder="Your name" />
                             <input type = "email" className = "form-control" placeholder="Your email" />
                             <textarea rows = "4" className = "form-control" placeholder="Your message" style = {{resize: "none"}}></textarea>
-                            <input type = "submit" className = "btn" value = "Send message" />
+                            <input type = "submit" className = "btn" value = "Send message" disabled={state.submitting} />
                         </form>
                     </div>
                     <div className = "contact-right my-2">
@@ -56,7 +61,7 @@ function Contact() {
                             <div>
                                 <span>Message</span>
                                 <p className = "text2">info@travelxplorer.com</p>
-                            </div>
+                                onSubmit={handleSubmit}              </div>
                         </div>
                     </div>
                 </div>
