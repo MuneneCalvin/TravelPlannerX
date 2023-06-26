@@ -811,48 +811,50 @@ template {
 }
 
 /* LOading Anime */
-.loading-wave {
+.custom-loader {
     margin: auto;
     margin-top: 25%;
     margin-bottom: 50%;
-    width: 300px;
-    height: 100px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    width: 70px;
+    height: 70px;
+    background: #ffa600;
+    border-radius: 50px;
+    -webkit-mask: radial-gradient(circle 31px at 50% calc(100% + 13px),#000 95%,#0000) top 4px left 50%,
+        radial-gradient(circle 31px,#000 95%,#0000) center,
+        radial-gradient(circle 31px at 50% -13px,#000 95%,#0000) bottom 4px left 50%,
+        linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    -webkit-mask-repeat: no-repeat;
+    animation: cu10 1.5s infinite;
 }
 
-.loading-bar {
-    width: 20px;
-    height: 10px;
-    margin: 0 5px;
-    background-color: var(--dark);
-    border-radius: 5px;
-    animation: loading-wave-animation 1s ease-in-out infinite;
-}
+@keyframes cu10 {
+  0% {
+    -webkit-mask-size: 0    18px,0    18px,0    18px,auto
+  }
 
-.loading-bar:nth-child(2) {
-    animation-delay: 0.1s;
-}
+  16.67% {
+    -webkit-mask-size: 100% 18px,0    18px,0    18px,auto
+  }
 
-.loading-bar:nth-child(3) {
-    animation-delay: 0.2s;
-}
+  33.33% {
+    -webkit-mask-size: 100% 18px,100% 18px,0    18px,auto
+  }
 
-.loading-bar:nth-child(4) {
-    animation-delay: 0.3s;
-}
+  50% {
+    -webkit-mask-size: 100% 18px,100% 18px,100% 18px,auto
+  }
 
-@keyframes loading-wave-animation {
-    0% {
-        height: 10px;
-    }
+  66.67% {
+    -webkit-mask-size: 0    18px,100% 18px,100% 18px,auto
+  }
 
-    50% {
-        height: 50px;
-    }
+  83.33% {
+    -webkit-mask-size: 0    18px,0    18px,100% 18px,auto
+  }
 
-    100% {
-        height: 10px;
-    }
+  100% {
+    -webkit-mask-size: 0    18px,0    18px,0    18px,auto
+  }
 }

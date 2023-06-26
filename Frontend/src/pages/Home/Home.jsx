@@ -23,12 +23,7 @@ function Home() {
     return (
         <main>
         {isLoading ? (
-        <div className="loading-wave">
-            <div className="loading-bar"></div>
-            <div className="loading-bar"></div>
-            <div className="loading-bar"></div>
-            <div className="loading-bar"></div>
-        </div>
+        <div className="custom-loader"></div>
         ): (
             <>
                 <header className = "flex">
