@@ -47,7 +47,7 @@ const DestinationsList = () => {
         {hotels.map((hotel, index) => (
           <div key={index} className="destination-card">
             <img src={hotel.image_url} alt={hotel.AccName} />
-            <h2>{hotel.AccName}</h2>
+            <h2>{hotel.AccId}. {hotel.AccName}</h2>
             <p>{hotel.Description}</p>
             <p>Phone: {hotel.phone_number}</p>
             <p>Price: ${hotel.AccPrice}</p>

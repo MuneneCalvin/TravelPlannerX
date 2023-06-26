@@ -32,7 +32,7 @@ const DestinationsList = () => {
       <div id='Destination' className="destinations-container">
       {destinations.map((destination) => (
         <div className="destination-card" key={destination._id}>
-          <h2>{destination.DesName}</h2>
+          <h2>{destination.DesId}. {destination.DesName}</h2>
           <p>{destination.Description}</p>
           <img src={destination.DesImage_url} alt={destination.DesName} />
           <p className="price">Price: ${destination.DesPrice}</p>

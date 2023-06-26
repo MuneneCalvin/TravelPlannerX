@@ -45,7 +45,7 @@ function Flights() {
         <tbody>
           {flights.map(flight => (
             <tr key={flight.id}>
-              <td>{flight.FlightName}</td>
+              <td>{flight.FlightId}. {flight.FlightName}</td>
               <td>{flight.origin}</td>
               <td>{flight.destination}</td>
               <td>{flight.start_date}</td>
