@@ -5,12 +5,19 @@ import './Destinations.css';
 const DestinationsList = () => {
   const navigate = useNavigate();
   const [destinations, setDestinations] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch('http://localhost:8080/destinations')
       .then((response) => response.json())
-      .then((data) => setDestinations(data))
-      .catch((error) => console.error(error));
+      .then((data) => {
+        setDestinations(data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error(error);
+        setLoading(false);
+      });
 
   }, []);
 
@@ -31,15 +38,19 @@ const DestinationsList = () => {
         </header>
 
       <div id='Destination' className="destinations-container">
-      {destinations.map((destination) => (
-        <div className="destination-card" key={destination._id}>
-          <h2>{destination.DesId}. {destination.DesName}</h2>
-          <p>{destination.Description}</p>
-          <img src={destination.DesImage_url} alt={destination.DesName} />
-          <p className="price">Price: ${destination.DesPrice}</p>
-          <button className="book-now-btn" onClick={() => handleBookNow(destination)}>Book Now</button>
-        </div>
-      ))}
+      {loading ? (
+        <div className="loader"></div>
+      ) : (
+        destinations.map((destination) => (
+          <div className="destination-card" key={destination._id}>
+            <h2>{destination.DesId}. {destination.DesName}</h2>
+            <p>{destination.Description}</p>
+            <img src={destination.DesImage_url} alt={destination.DesName} />
+            <p className="price">Price: ${destination.DesPrice}</p>
+            <button className="book-now-btn" onClick={() => handleBookNow(destination)}>Book Now</button>
+          </div>
+        ))
+      )}
     </div>
       </div>
     </main>

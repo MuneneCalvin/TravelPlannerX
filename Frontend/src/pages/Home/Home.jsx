@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import brazil from '../../assets/featured-reo-de-janeiro-brazil.jpg';
 import australia from '../../assets/featured-north-bondi-australia.jpg';
 import germany from '../../assets/featured-berlin-germany.jpg';
@@ -9,10 +10,28 @@ import video from '../../assets/video-section.mp4';
 import './Home.css'
 
 function Home() {
+    const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(() => {
+        const timeout = setTimeout(() => {
+            setIsLoading(false);
+        }, 6000);
+    
+        return () => clearTimeout(timeout);
+    }, []);
 
     return (
         <main>
-        <header className = "flex">
+        {isLoading ? (
+        <div className="loading-wave">
+            <div className="loading-bar"></div>
+            <div className="loading-bar"></div>
+            <div className="loading-bar"></div>
+            <div className="loading-bar"></div>
+        </div>
+        ): (
+            <>
+                <header className = "flex">
             <div className = "container">
                 <div className = "header-title">
                     <h1>Leave Your Footprints</h1>
@@ -170,6 +189,8 @@ function Home() {
                 </button>
             </div>
         </section>
+            </>
+        )}
         </main>
     );
 }

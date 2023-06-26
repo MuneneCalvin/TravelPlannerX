@@ -5,17 +5,24 @@ import './Flights.css';
 
 function Flights() {
   const [flights, setFlights] = useState([]);
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
     fetch('http://localhost:8080/flights')
       .then(response => response.json())
-      .then(data => setFlights(data))
-      .catch(error => console.error(error));
+      .then(data => {
+        setFlights(data);
+        setLoading(false);
+      })
+      .catch(error => {
+        console.error(error);
+        setLoading(false);
+      });
+
   }, []);
 
-  const handleBook = (flight) => {
-    console.log('Book Now:', flight);
+  const handleBook = () => {
     navigate('/Booking');
   };
 
@@ -34,7 +41,21 @@ function Flights() {
       </header>
 
       <section id='flight'>
-        <table>
+        {loading ? (
+          <div className="spinner">
+            <div></div>   
+            <div></div>    
+            <div></div>    
+            <div></div>    
+            <div></div>    
+            <div></div>    
+            <div></div>    
+            <div></div>    
+            <div></div>    
+            <div></div>    
+          </div>
+        ) : (
+          <table>
           <thead>
             <tr>
               <th>Flight Name</th>
@@ -70,6 +91,7 @@ function Flights() {
             ))}
           </tbody>
         </table>
+        )}
       </section>
     </div>
   );

@@ -1,15 +1,24 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import './Hotels.css';
 
 const DestinationsList = () => {
   const navigate = useNavigate();
   const [hotels, setHotels] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch('http://localhost:8080/hotels')
       .then((response) => response.json())
-      .then((data) => setHotels(data))
-      .catch((error) => console.error(error));
+      .then((data) => {
+        setHotels(data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error(error);
+        setLoading(false);
+      });
+
   }, []);
 
   const handleBookNow = () => {
@@ -29,16 +38,24 @@ const DestinationsList = () => {
       </header>
 
       <div id='Destination' className="destinations-container">
-        {hotels.map((hotel, index) => (
-          <div key={index} className="destination-card">
-            <img src={hotel.image_url} alt={hotel.AccName} />
-            <h2>{hotel.AccId}. {hotel.AccName}</h2>
-            <p>{hotel.Description}</p>
-            <p>Phone: {hotel.phone_number}</p>
-            <p>Price: ${hotel.AccPrice}</p>
-            <button className='book-now-btn' onClick={() => handleBookNow(hotel)}>Book Now</button>
+        {loading ? (
+          <div className="loader-hot">
+            <span className="loader-text">loading</span>
+            <span className="load"></span>
           </div>
-        ))}
+
+        ) : (
+          hotels.map((hotel, index) => (
+            <div key={index} className="destination-card">
+              <img src={hotel.image_url} alt={hotel.AccName} />
+              <h2>{hotel.AccId}. {hotel.AccName}</h2>
+              <p>{hotel.Description}</p>
+              <p>Phone: {hotel.phone_number}</p>
+              <p>Price: ${hotel.AccPrice}</p>
+              <button className='book-now-btn' onClick={() => handleBookNow(hotel)}>Book Now</button>
+            </div>
+          ))
+        )}
       </div>
     </main>
   );

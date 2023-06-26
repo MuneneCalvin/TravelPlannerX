@@ -137,7 +137,16 @@ function Booking() {
                     <>
                         <h2>Booking:</h2>
                         <div className='booking-form-container'>
-                            <form className='booking-form-card' onSubmit={handleSubmit}>
+                            {loading ? (
+                                <div className="loading">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
+                            ) : (
+                                <form className='booking-form-card' onSubmit={handleSubmit}>
                                 
                                 <div className='booking-form'>
                                     <label>Booking Date:</label>
@@ -175,6 +184,7 @@ function Booking() {
 
                                 <button className='btn-submit' type='submit'><span>Book Now</span></button>
                             </form>
+                            )}
                         </div>
                     </>
                 )}
@@ -184,7 +194,14 @@ function Booking() {
                         <h2>My Bookings:</h2>
                     
                         {loading ? (
-                            <p>Loading...</p>
+                            <div className='booking-load'>
+                                <svg className="pl" width="240" height="240" viewBox="0 0 240 240">
+                                    <circle className="pl__ring pl__ring--a" cx="120" cy="120" r="105" fill="none" stroke="#000" strokeWidth="20" strokeDasharray="0 660" strokeDashoffset="-330" strokeLinecap="round"></circle>
+                                    <circle className="pl__ring pl__ring--b" cx="120" cy="120" r="35" fill="none" stroke="#000" strokeWidth="20" strokeDasharray="0 220" strokeDashoffset="-110" strokeLinecap="round"></circle>
+                                    <circle className="pl__ring pl__ring--c" cx="85" cy="120" r="70" fill="none" stroke="#000" strokeWidth="20" strokeDasharray="0 440" strokeLinecap="round"></circle>
+                                    <circle className="pl__ring pl__ring--d" cx="155" cy="120" r="70" fill="none" stroke="#000" strokeWidth="20" strokeDasharray="0 440" strokeLinecap="round"></circle>
+                                </svg>
+                            </div>
                         ) : booking.length === 0 ? (
                             <div className='Bookings'>
                                 <p>You have no bookings at the moment.</p>

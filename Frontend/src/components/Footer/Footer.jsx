@@ -1,7 +1,6 @@
 import './Footer.css';
 
 
-
 function Footer() {
     const handleSubscribe = (event) => {
         event.preventDefault();
