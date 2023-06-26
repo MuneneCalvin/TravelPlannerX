@@ -8,7 +8,7 @@ function Footer() {
                     <a href = "index.html" className = "site-brand">
                         Travel<span>Xplorer</span>
                     </a>
-                    <p className = "text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet voluptates maiores nam vitae iusto. Placeat rem sint voluptas natus exercitationem autem quod neque, odit laudantium reiciendis ipsa suscipit veritatis voluptate.</p>
+                    <p className = "text">But we are more than just a booking platform – we are a community of passionate travelers who are eager to share their stories, recommendations, and insights. Connect with like-minded explorers through our forum, where you can seek advice, exchange travel tales, and forge lifelong friendships</p>
                 </div>
 
                 <div className = "footer-item">
@@ -20,23 +20,18 @@ function Footer() {
                             </a>
                         </li>
                         <li>
-                            <a href = "#">
+                            <a href = "https://www.instagram.com/__future.west__">
                                 <i className = "fab fa-instagram"></i>
                             </a>
                         </li>
                         <li>
-                            <a href = "#">
-                                <i className = "fab fa-twitter"></i>
+                            <a href = "https://www.linkedin.com/in/calvin-munene/">
+                                <i className = "fab fa-linkedin"></i>
                             </a>
                         </li>
                         <li>
-                            <a href = "#">
-                                <i className = "fab fa-pinterest"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href = "#">
-                                <i className = "fab fa-google-plus"></i>
+                            <a href = "https://munenecal.netlify.app/">
+                                <i className = "fa fa-globe"></i>
                             </a>
                         </li>
                     </ul>
