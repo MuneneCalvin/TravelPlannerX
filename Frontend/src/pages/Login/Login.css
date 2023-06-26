@@ -133,68 +133,53 @@ background: linear-gradient(to right, #ec2F4B, #009FFF);
     line-height: 1rem;
     color: rgba(156, 163, 175, 1);
   }
-  
 
 
-
-/*
-.Form {
-    display: flex;
-    flex-direction: column;
-    margin-top: 70px;
-    margin-bottom: 25%;
-    align-items: center;
-    box-shadow: var(--green) 0px 13px 27px;
-    height: 50%;
-    width: 35%;
-    margin-inline: auto;
-    padding-block: 10px;
-    background-color: #171717;
-    border-radius: 10px;
-    transition: .4s ease-in-out;
-    gap: 1rem;
-}
-.Form:hover {
-    transform: scale(1.05);
-    border: 1px solid black;
-}
-.Form > .loginBanner {
-    color: #DA22FF;
-    font-size: 2em;
-    margin-bottom: 20px;
-}
-.Form > p {
-    color: red;
-}
-.input-thing {
-    display: flex;
-    align-items: center;
+/* Loading Anime */
+.custom-loader {
+  margin: auto;
+  margin-top: 25%;
+  margin-bottom: 50%;
+  width: 70px;
+  height: 70px;
+  background: #ffa600;
+  border-radius: 50px;
+  -webkit-mask: radial-gradient(circle 31px at 50% calc(100% + 13px),#000 95%,#0000) top 4px left 50%,
+    radial-gradient(circle 31px,#000 95%,#0000) center,
+    radial-gradient(circle 31px at 50% -13px,#000 95%,#0000) bottom 4px left 50%,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  -webkit-mask-repeat: no-repeat;
+  animation: cu10 1.5s infinite;
 }
 
-.Form input:not([type="submit"]) {
-    width: 90%;
-    margin: 5px;
-    padding: 5px;
-    border-top: none;
-    border-left: none;
-    border-right: none;
-    outline: none;
+@keyframes cu10 {
+  0% {
+    -webkit-mask-size: 0    18px,0    18px,0    18px,auto
+  }
+
+  16.67% {
+    -webkit-mask-size: 100% 18px,0    18px,0    18px,auto
+  }
+
+  33.33% {
+    -webkit-mask-size: 100% 18px,100% 18px,0    18px,auto
+  }
+
+  50% {
+    -webkit-mask-size: 100% 18px,100% 18px,100% 18px,auto
+  }
+
+  66.67% {
+    -webkit-mask-size: 0    18px,100% 18px,100% 18px,auto
+  }
+
+  83.33% {
+    -webkit-mask-size: 0    18px,0    18px,100% 18px,auto
+  }
+
+  100% {
+    -webkit-mask-size: 0    18px,0    18px,0    18px,auto
+  }
 }
-form input:not([type="submit"]):focus {
-    border-bottom: 1px solid rgb(18, 172, 18);
-}
-.Form .submitBtn {
-    color: rgb(18, 172, 18);
-    width: 25%;
-    margin-top: 10%;
-    padding: 5px;
-    border: none;
-    outline: none;
-    border-radius: 5px;
-    font-size: 1.2em;
-}
-.Form .submitBtn:hover {
-    background-color: rgb(18, 172, 18);
-    color: rgb(255, 255, 255);
-    cursor: pointer;
-} */

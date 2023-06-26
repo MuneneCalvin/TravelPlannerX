@@ -60,7 +60,7 @@ export default function Login() {
 				<p className='error'>{errors.password?.message}</p>
 
 				{isLoading ? (
-					<button className="sign" type="submit" value="Submit" disabled>Signing in...</button>
+					<div className="custom-loader"></div>
 				) : (
 					<button className="sign" type="submit" value="Submit">Sign in</button>
 				)}
