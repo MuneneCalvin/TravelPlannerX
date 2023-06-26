@@ -150,7 +150,7 @@ function Booking() {
                                 
                                 <div className='booking-form'>
                                     <label>Booking Date:</label>
-                                    <input className='input-field' type='date' id='bookingDate' name='BookingDate' value={formData.BookingDate} onChange={handleInputChange} />
+                                    <input className='input-field' type='date' id='bookingDate' name='BookingDate' value={formData.BookingDate} onChange={handleInputChange} required />
                                 </div>
                                 <div className='booking-form'>
                                     <label htmlFor='checkInDate'>Check In Date:</label>
