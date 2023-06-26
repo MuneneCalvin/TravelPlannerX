@@ -9,7 +9,7 @@ function About() {
             <div className = "container">
                 <div className = "header-title">
                     <h1>About</h1>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus rerum maxime enim odit illum in molestias beatae doloremque, ratione optio.</p>
+                    <p>Our travel company is a passionate and innovative venture dedicated to redefining the way people experience the world. We believe that travel has the power to broaden horizons, foster cultural understanding, and create lifelong memories. </p>
                 </div>
             </div>
         </header>
@@ -27,8 +27,9 @@ function About() {
                     </div>
                     <div className = "about-right">
                         <h2>15 Years of Experience</h2>
-                        <p className = "text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae vitae sed aperiam qui repudiandae earum voluptatem. Modi at inventore omnis veniam necessitatibus exercitationem vel nesciunt delectus ex officiis, culpa doloremque odit illo saepe placeat. Delectus consequuntur reprehenderit omnis accusantium officiis!</p>
-                        <p className = "text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique explicabo blanditiis quidem consequuntur qui quaerat fuga iste tenetur consequatur porro. Aliquam maiores alias doloribus at quisquam quo numquam perferendis. Odit!</p>
+                        <p className = "text">TravelXplorer is owned by Xe7en Ltd, a leading branch in web design and e-commerce solutions. It is counted for its expertise in web solutions and its top ranking business portals. Our invincible expertise and rich experience has raise our spirit to reach ahead from our clients expectation.</p>
+                        <p className = "text">Our mission is to touch the horizon where our capabilities may successfully meet with the requirements og our clients, that too with ultimate transparency and cost-effectiveness.</p>
+                        <p className='text'>Our vision is sow the seeds of par-excellence services with customer centric approach and reap the trust of worldwide clients. </p>
                     </div>
                 </div>
             </div>
