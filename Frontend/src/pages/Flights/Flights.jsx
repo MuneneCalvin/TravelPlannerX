@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
-import { UseNavigate } from 'react-router-dom';
+// import { UseNavigate } from 'react-router-dom';
 import './Flights.css';
 
 function Flights() {
-  const navigate = UseNavigate();
+  // const navigate = UseNavigate();
 
   const [flights, setFlights] = useState([]);
 
@@ -15,7 +15,7 @@ function Flights() {
   }, []);
 
   const handleBook = (flight) => {
-    navigate('/book', { state: { flight } });
+    // navigate('/booking');
     console.log('Book Now:', flight);
   };
 
