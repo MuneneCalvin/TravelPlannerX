@@ -160,10 +160,7 @@ function Booking() {
                         <h2>Booking:</h2>
                         <div className='booking-form-container'>
                             <form className='booking-form-card' onSubmit={handleSubmit}>
-                                {/* <div className='booking-form'>
-                                    <label htmlFor='UserId'>User Id:</label>
-                                    <input className='input-field' type='number' id='UserId' name='UserId' value={user.id} onChange={handleInputChange} required />
-                                </div> */}
+                                
                                 <div className='booking-form'>
                                     <label>Booking Date:</label>
                                     <input className='input-field' type='date' id='bookingDate' name='BookingDate' value={formData.BookingDate} onChange={handleInputChange} />
@@ -183,6 +180,7 @@ function Booking() {
                                 <div className='booking-form'>
                                     <label htmlFor='accId'>Accommodation Id:</label>
                                     <input className='input-field' type='number' id='accId' name='AccId' value={formData.AccId} onChange={handleInputChange} required />
+                                    
                                 </div>
                                 <div className='booking-form'>
                                     <label htmlFor='totalPrice'>Total Price:</label>
@@ -190,7 +188,11 @@ function Booking() {
                                 </div>
                                 <div className='booking-form'>
                                     <label htmlFor='bookingStatus'>Status:</label>
-                                    <input className='input-field' type='text' id='status' name='status' value={formData.status} onChange={handleInputChange} required />
+                                    <select className='input-field' type='text' id='status' name='status' value={formData.status} onChange={handleInputChange} required>
+                                        <option value='Pending'>Pending</option>
+                                        <option value='Confirmed'>Confirmed</option>
+                                        <option value='Cancelled'>Cancelled</option>
+                                    </select>
                                 </div>
 
                                 <button className='btn-submit' type='submit'><span>Book Now</span></button>
