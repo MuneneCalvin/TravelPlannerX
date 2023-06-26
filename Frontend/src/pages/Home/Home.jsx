@@ -23,7 +23,14 @@ function Home() {
     return (
         <main>
         {isLoading ? (
-        <div className="custom-loader"></div>
+        <div className="spinner-load">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
         ): (
             <>
                 <header className = "flex">

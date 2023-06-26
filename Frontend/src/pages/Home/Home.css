@@ -811,50 +811,62 @@ template {
 }
 
 /* LOading Anime */
-.custom-loader {
+.spinner-load {
     margin: auto;
     margin-top: 25%;
     margin-bottom: 50%;
-    width: 70px;
-    height: 70px;
-    background: #ffa600;
-    border-radius: 50px;
-    -webkit-mask: radial-gradient(circle 31px at 50% calc(100% + 13px),#000 95%,#0000) top 4px left 50%,
-        radial-gradient(circle 31px,#000 95%,#0000) center,
-        radial-gradient(circle 31px at 50% -13px,#000 95%,#0000) bottom 4px left 50%,
-        linear-gradient(#000 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    -webkit-mask-repeat: no-repeat;
-    animation: cu10 1.5s infinite;
+    width: 44px;
+    height: 44px;
+    animation: spinner-y0fdc1 2s infinite ease;
+    transform-style: preserve-3d;
 }
 
-@keyframes cu10 {
-  0% {
-    -webkit-mask-size: 0    18px,0    18px,0    18px,auto
-  }
+.spinner-load > div {
+ background-color: rgba(0,77,255,0.2);
+ height: 100%;
+ position: absolute;
+ width: 100%;
+ border: 2px solid var(--dark);
+}
 
-  16.67% {
-    -webkit-mask-size: 100% 18px,0    18px,0    18px,auto
-  }
+.spinner-load div:nth-of-type(1) {
+ transform: translateZ(-22px) rotateY(180deg);
+}
 
-  33.33% {
-    -webkit-mask-size: 100% 18px,100% 18px,0    18px,auto
-  }
+.spinner-load div:nth-of-type(2) {
+ transform: rotateY(-270deg) translateX(50%);
+ transform-origin: top right;
+}
 
-  50% {
-    -webkit-mask-size: 100% 18px,100% 18px,100% 18px,auto
-  }
+.spinner-load div:nth-of-type(3) {
+ transform: rotateY(270deg) translateX(-50%);
+ transform-origin: center left;
+}
 
-  66.67% {
-    -webkit-mask-size: 0    18px,100% 18px,100% 18px,auto
-  }
+.spinner-load div:nth-of-type(4) {
+ transform: rotateX(90deg) translateY(-50%);
+ transform-origin: top center;
+}
 
-  83.33% {
-    -webkit-mask-size: 0    18px,0    18px,100% 18px,auto
-  }
+.spinner-load div:nth-of-type(5) {
+ transform: rotateX(-90deg) translateY(50%);
+ transform-origin: bottom center;
+}
 
-  100% {
-    -webkit-mask-size: 0    18px,0    18px,0    18px,auto
-  }
+.spinner-load div:nth-of-type(6) {
+ transform: translateZ(22px);
+}
+
+@keyframes spinner-y0fdc1 {
+ 0% {
+  transform: rotate(45deg) rotateX(-25deg) rotateY(25deg);
+ }
+
+ 50% {
+  transform: rotate(45deg) rotateX(-385deg) rotateY(25deg);
+ }
+
+ 100% {
+  transform: rotate(45deg) rotateX(-385deg) rotateY(385deg);
+ }
 }
