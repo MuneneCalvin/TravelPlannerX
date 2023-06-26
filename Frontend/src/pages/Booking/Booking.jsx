@@ -186,9 +186,9 @@ function Booking() {
                         {loading ? (
                             <p>Loading...</p>
                         ) : booking.length === 0 ? (
-                            <div>
+                            <div className='Bookings'>
                                 <p>You have no bookings at the moment.</p>
-                                <button onClick={handleNavigateToBookingForm}>Add Booking</button>
+                                <button className='add-booking' onClick={handleNavigateToBookingForm}>Add Booking</button>
                             </div>
                         ) : (
                         <div className="booking-container">
