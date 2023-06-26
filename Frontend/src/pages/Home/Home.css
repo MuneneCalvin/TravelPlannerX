@@ -284,12 +284,8 @@ header{
 }
 
 /* video */
-#video {
-    background-color: #fff;
-}
 .video-wrapper{
     margin-top: 40px;
-    margin-bottom: 40px;
     height: 500px;
     position: relative;
 }
@@ -535,7 +531,7 @@ button,
 [type="button"],
 [type="reset"],
 [type="submit"] {
--webkit-appearance: button;
+    -webkit-appearance: button;
 }
 
 button::-moz-focus-inner,
