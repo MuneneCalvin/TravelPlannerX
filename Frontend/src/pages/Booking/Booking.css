@@ -53,6 +53,13 @@
     margin-left: auto;
     margin-right: auto;
 }
+.user-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px;
+}
 .user h2 {
     color: var(--hover-text);
     font-size: 18px;
@@ -687,10 +694,10 @@ input:hover {
  }
  
  .loading span {
-  width: 4px;
-  height: 50px;
-  background: var(--first-color);
-  animation: scale var(--speed-of-animation) ease-in-out infinite;
+    width: 4px;
+    height: 50px;
+    background: var(--first-color);
+    animation: scale var(--speed-of-animation) ease-in-out infinite;
  }
  
  .loading span:nth-child(2) {
