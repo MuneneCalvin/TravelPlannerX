@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Destinations.css';
 
 const DestinationsList = () => {
+  const navigate = useNavigate();
   const [destinations, setDestinations] = useState([]);
 
   useEffect(() => {
@@ -12,9 +14,8 @@ const DestinationsList = () => {
 
   }, []);
 
-  const handleBookNow = (destination) => {
-    // Implement your book now logic here
-    console.log('Book Now:', destination);
+  const handleBookNow = () => {
+    navigate('/Booking');
   };
 
   return (
