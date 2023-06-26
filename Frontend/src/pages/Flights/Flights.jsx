@@ -1,7 +1,10 @@
 import { useEffect, useState } from 'react';
+import { UseNavigate } from 'react-router-dom';
 import './Flights.css';
 
 function Flights() {
+  const navigate = UseNavigate();
+
   const [flights, setFlights] = useState([]);
 
   useEffect(() => {
@@ -12,7 +15,7 @@ function Flights() {
   }, []);
 
   const handleBook = (flight) => {
-    // Implement your book now logic here
+    navigate('/book', { state: { flight } });
     console.log('Book Now:', flight);
   };
 
@@ -22,7 +25,7 @@ function Flights() {
             <div className = "container">
                 <div className = "header-title">
                     <h1>Book Your Flight</h1>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus rerum maxime enim odit illum in molestias beatae doloremque, ratione optio.</p>
+                    <p>Discover the freedom of the skies as you search and book from a wide selection of flights to your dream destinations, ensuring a seamless and exhilarating travel experience.</p>
                 </div>
             </div>
         </header>

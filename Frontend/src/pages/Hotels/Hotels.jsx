@@ -38,7 +38,8 @@ const DestinationsList = () => {
         <div className="container">
           <div className="header-title">
             <h1>Book Your Destination:</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus rerum maxime enim odit illum in molestias beatae doloremque, ratione optio.</p>
+            <p>
+              Indulge in comfort and relaxation as you browse through an extensive range of handpicked accommodations, from luxurious resorts to cozy boutique hotels, to find the perfect home away from home for your travels.</p>
           </div>
         </div>
       </header>
