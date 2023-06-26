@@ -1,14 +1,22 @@
+import { useState } from 'react';
 import { useForm } from '@formspree/react';
 import './Contact.css'
 
 
 function Contact() {
+    const [loading, setLoading] = useState(false);
     const [state, handleSubmit] = useForm("mdornagq");
         if (state.succeeded) {
             return <p>Thanks for you Message!</p>;
         }
-    return (
 
+        const handleFormSubmit = async (e) => {
+            setLoading(true);
+            await handleSubmit(e);
+            setLoading(false);
+        };
+
+    return (
         <main>
         <header id='contact-page' className = "flex header-sm">
             <div className = "container">
@@ -28,12 +36,20 @@ function Contact() {
 
                 <div className = "contact-row">
                     <div className = "contact-left">
-                        <form className = "contact-form" onSubmit={handleSubmit}>
+                        <form className = "contact-form" onSubmit={handleFormSubmit}>
                             <input type = "text" className = "form-control" placeholder="Your name" />
                             <input type = "email" className = "form-control" placeholder="Your email" />
                             <textarea rows = "4" className = "form-control" placeholder="Your message" style = {{resize: "none"}}></textarea>
                             <input type = "submit" className = "btn" value = "Send message" disabled={state.submitting} />
                         </form>
+                        {loading && 
+                        <div className="loading-contact">
+                            <svg width="64px" height="48px">
+                                <polyline points="0.157 23.954, 14 23.954, 21.843 48, 43 0, 50 24, 64 24" id="back"></polyline>
+                                <polyline points="0.157 23.954, 14 23.954, 21.843 48, 43 0, 50 24, 64 24" id="front"></polyline>
+                            </svg>
+                        </div>
+                        }
                     </div>
                     <div className = "contact-right my-2">
                         <div className = "contact-item">
@@ -61,7 +77,7 @@ function Contact() {
                             <div>
                                 <span>Message</span>
                                 <p className = "text2">info@travelxplorer.com</p>
-                                onSubmit={handleSubmit}              </div>
+                            </div>
                         </div>
                     </div>
                 </div>
