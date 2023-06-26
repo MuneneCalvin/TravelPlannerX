@@ -24,7 +24,7 @@ const DestinationsList = () => {
             <div className = "container">
                 <div className = "header-title">
                     <h1>Book Your Destination:</h1>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus rerum maxime enim odit illum in molestias beatae doloremque, ratione optio.</p>
+                    <p>Explore a world of enchanting destinations, from breathtaking natural wonders to vibrant cultural hubs, and embark on a journey of discovery and awe.</p>
                 </div>
             </div>
         </header>
