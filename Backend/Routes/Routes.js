@@ -45,7 +45,7 @@ const travelRoutes = (app) => {
 
     app.route("/bookings/:id")
         .get(getBookingsByUser)
-        .post(createBooking)
+        .post(createBookingByUser)
         .put(updateBooking)
         .delete(deleteBooking);
 

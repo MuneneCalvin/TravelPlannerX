@@ -38,7 +38,7 @@ export const getBooking = async (req, res) => {
 
 // Creating a booking
 export const createBooking = async (req, res) => {
-    try {
+        try {
         const { BookingDate, check_in_date, check_out_date, status, total_price, FlightId, AccId, UserId } = req.body;
         let pool = await sql.connect(config.sql);
         const query = `INSERT INTO Bookings (BookingDate, check_in_date, check_out_date, status, total_price, FlightId, AccId, UserId) VALUES (@BookingDate, @check_in_date, @check_out_date, @status, @total_price, @FlightId, @AccId, @UserId)`;
@@ -50,15 +50,16 @@ export const createBooking = async (req, res) => {
             .input("total_price", sql.Int, total_price)
             .input("FlightId", sql.Int, FlightId)
             .input("AccId", sql.Int, AccId)
-            .input("UserId", sql.Int, UserId)
-            await booking.query(query);
+            .input("UserId", sql.Int, UserId);
+        await booking.query(query);
         res.status(201).json({ Message: `Booking was created successfully..!!!!` });
-    } catch (error) {
+        } catch (error) {
         res.status(500).json({ Message: `Error while creating Booking ${error.message}` });
-    } finally {
-        sql.close();
-    }
-};
+        } finally {
+            sql.close();
+        }
+    };
+
 
 // Updating a booking
 export const updateBooking = async (req, res) => {
