@@ -44,7 +44,7 @@ export default function Login() {
                 <div className="container">
                     <form className="card" onSubmit={handleSubmit(onSubmit)}>
                         <a className="singup">Welcome</a>
-                        <p className='signup'>Lets create your account!</p>
+                        <p className='signup2'>Lets create your account!</p>
                         <div className="inputBox1">
                             <input type="text" {...register("username")} required />
                             <span className="user">Full Names</span>
