@@ -19,7 +19,7 @@ function Booking() {
     const { user, dispatch } = useContext(Context);
     const [booking, setBooking] = useState([]);
     const [activeTab, setActiveTab] = useState("bookings");
-    const [formData, setFormData] = useState({ UserId: '', BookingDate: '', check_in_date: '', check_out_date: '', FlightId: '', AccId: '', total_price: '', status: '' });
+    const [formData, setFormData] = useState({ UserId: user.id, BookingDate: '', check_in_date: '', check_out_date: '', FlightId: '', AccId: '', total_price: '', status: '' });
 
     useEffect(() => {
             fetch(`http://localhost:8080/bookings/${user.id}`)
@@ -69,7 +69,7 @@ function Booking() {
     };
 
     const handleInputChange = (event) => {
-        setFormData({...formData,[event.target.name]: event.target.value});
+        setFormData({ ...formData, [event.target.name]: event.target.value });
     };
 
     const handleSubmit = (event) => {
@@ -95,7 +95,7 @@ function Booking() {
                 alert("Booking Not Added");
             });
 
-            setFormData({ UserId: '', BookingDate: '', check_in_date: '', check_out_date: '', FlightId: '', AccId: '', total_price: '', status: '' })
+            setFormData({ UserId: user.id, BookingDate: '', check_in_date: '', check_out_date: '', FlightId: '', AccId: '', total_price: '', status: '' })
     };
 
     return (
@@ -161,10 +161,10 @@ function Booking() {
                         <h2>Booking:</h2>
                         <div className='booking-form-container'>
                             <form className='booking-form-card' onSubmit={handleSubmit}>
-                                <div className='booking-form'>
+                                {/* <div className='booking-form'>
                                     <label htmlFor='UserId'>User Id:</label>
-                                    <input className='input-field' type='number' id='UserId' name='UserId' value={formData.UserId} onChange={handleInputChange} required />
-                                </div>
+                                    <input className='input-field' type='number' id='UserId' name='UserId' value={user.id} onChange={handleInputChange} required />
+                                </div> */}
                                 <div className='booking-form'>
                                     <label>Booking Date:</label>
                                     <input className='input-field' type='date' id='bookingDate' name='BookingDate' value={formData.BookingDate} onChange={handleInputChange} />
