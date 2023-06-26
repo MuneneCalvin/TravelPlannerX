@@ -195,14 +195,14 @@ ul li p {
 }
 .input-field {
   max-width: 290px;
-  background-color: grey;
-  color: #242424;
+  background-color: lightgrey;
+  color: var(--color);
   padding: .15rem .5rem;
   min-height: 40px;
   border-radius: 4px;
   outline: none;
   border: none;
-  line-height: 1;
+  line-height: 1.5;
   box-shadow: 0px 10px 20px -18px;
 }
 
@@ -227,8 +227,8 @@ input:hover {
   box-shadow: 0px 6px 24px 0px rgba(0, 0, 0, 0.2);
   overflow: hidden;
   border: none;
- }
- 
+}
+
 .btn-submit:after {
   content: " ";
   width: 0%;
