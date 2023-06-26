@@ -153,11 +153,11 @@ function Booking() {
                                 </div>
                                 <div className='booking-form'>
                                     <label htmlFor='flightId'>Flight Id:</label>
-                                    <input className='input-field' type='number' id='flightId' name='FlightId' placeholder='Enter the Flight Id' value={formData.FlightId} onChange={handleInputChange} required />
+                                    <input className='input-field' type='number' id='flightId' name='FlightId' placeholder='Enter the Flight No' value={formData.FlightId} onChange={handleInputChange} required />
                                 </div>
                                 <div className='booking-form'>
                                     <label htmlFor='accId'>Accommodation Id:</label>
-                                    <input className='input-field' type='number' id='accId' name='AccId' placeholder='Enter the Hotel Id ' value={formData.AccId} onChange={handleInputChange} required />
+                                    <input className='input-field' type='number' id='accId' name='AccId' placeholder='Enter the Hotel No ' value={formData.AccId} onChange={handleInputChange} required />
                                     
                                 </div>
                                 <div className='booking-form'>

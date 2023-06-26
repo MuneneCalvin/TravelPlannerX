@@ -1,6 +1,13 @@
 import './Footer.css';
 
+
+
 function Footer() {
+    const handleSubscribe = (event) => {
+        event.preventDefault();
+        alert('Thank you for subscribing!');
+    };
+
     return (
         <footer className = "py-4">
             <div className = "container footer-row">
@@ -51,8 +58,8 @@ function Footer() {
                 <div className = "subscribe-form footer-item">
                     <h2>Subscribe for Newsletter!</h2>
                     <form className = "flex">
-                        <input type = "email" placeholder="Enter Email" className = "form-control" />
-                        <input type = "submit" className = "btn" value = "Subscribe" />
+                        <input type = "email" placeholder="Enter Email" className = "form-control" required />
+                        <input type = "submit" className = "btn" value = "Subscribe" onClick={handleSubscribe} />
                     </form>
                 </div>
             </div>
