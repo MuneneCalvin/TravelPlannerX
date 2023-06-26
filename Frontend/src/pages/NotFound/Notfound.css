@@ -55,8 +55,8 @@
     opacity: 0.5;
     transform: rotate(180deg);
 }
-/* animation */
 
+/* animation */
 @keyframes animate1 {
     0% {opacity: 0;}
     100% {
