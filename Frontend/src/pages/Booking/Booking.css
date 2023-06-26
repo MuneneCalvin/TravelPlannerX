@@ -140,7 +140,7 @@ ul li p {
   
   .booking-card {
     width: 300px;
-    background-color: var(--light-grey);
+    background-color: #dfe6e9;
     color: var(--dark);
     padding: 20px;
     border-radius: 8px;
