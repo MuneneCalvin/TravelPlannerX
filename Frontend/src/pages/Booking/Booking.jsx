@@ -104,7 +104,6 @@ function Booking() {
                 <div className="user">
                     <img src={userimg} className='user-img' />
                     <div className='user-details'>
-                        <p>{user.id}</p>
                         <h2>{user.username}</h2>
                         <p>{user.email}</p>
                     </div>

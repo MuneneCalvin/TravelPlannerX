@@ -18,8 +18,7 @@ export default function Profile() {
           <img className="image" src={profilePicture || user.profilePicture} alt="" />
         </div>
         <div className="profile-info">
-          <p>{user.id}</p>
-          <h4>{user.username}</h4>
+          <h4>{user.username}</h4> <br />
           <span>{user.email}</span>
         </div>
       </div>

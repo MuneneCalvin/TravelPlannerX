@@ -1,5 +1,6 @@
 .profile {
   display: flex;
+  flex-direction: column;
   align-items: center;
   margin-bottom: 20px;
 }
@@ -18,7 +19,9 @@
 }
 
 .profile-info {
-  margin-left: 20px;
+  margin-top: 54%;
+  color: black;
+  gap: 2rem;
 }
 
 h4 {
