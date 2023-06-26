@@ -12,7 +12,7 @@ import SignIn from './pages/SignIn/SignIn';
 import Login from './pages/Login/Login'
 import Booking from './pages/Booking/Booking';
 import Payment from './components/Payment/payment';
-import Notfound from './pages/Notfound';
+import Notfound from './pages/NotFound/Notfound';
 import { useContext } from 'react';
 import { Context } from './context/userContext/Context';
 
