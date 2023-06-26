@@ -13,8 +13,8 @@ function Contact() {
         <header id='contact-page' className = "flex header-sm">
             <div className = "container">
                 <div className = "header-title">
-                    <h1>Contact</h1>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus rerum maxime enim odit illum in molestias beatae doloremque, ratione optio.</p>
+                    <h1>Contact Us</h1>
+                    <p>We would love to hear from you! Please feel free to reach out to us with any questions, inquiries, or feedback using the contact form below.</p>
                 </div>
             </div>
         </header>
