@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const DestinationsList = () => {
+  const navigate = useNavigate();
   const [hotels, setHotels] = useState([]);
 
   useEffect(() => {
@@ -10,26 +12,8 @@ const DestinationsList = () => {
       .catch((error) => console.error(error));
   }, []);
 
-  const handleBookNow = (destination) => {
-    // Send the booking data to the database
-    fetch('http://localhost:8080/bookings', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(destination),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        // Booking successful, show alert
-        alert('Booking successful!');
-        console.log('Booking data:', data);
-      })
-      .catch((error) => {
-        // Error occurred while booking, show alert
-        alert('Booking failed. Please try again.');
-        console.error(error);
-      });
+  const handleBookNow = () => {
+    navigate('/Booking');
   };
 
   return (
