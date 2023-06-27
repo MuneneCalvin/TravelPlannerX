@@ -98,12 +98,12 @@ function Booking() {
                 navigate('/payment');
             } else {
                 console.error('Error:', response);
-                alert("Booking Not pushed");
+                alert("Booking Not Added...Try Again.!");
             }
             })
             .catch((error) => {
                 console.error('Error:', error);
-                alert("Booking Not Added");
+                alert("Theres an Error...Try Again.!");
             });
 
             setFormData({ UserId: user.id, BookingDate: '', check_in_date: '', check_out_date: '', FlightId: '', AccId: '', total_price: '', status: '' })
@@ -146,7 +146,7 @@ function Booking() {
                                     <span></span>
                                 </div>
                             ) : (
-                                <form className='booking-form-card' onSubmit={handleSubmit}>
+                            <form className='booking-form-card' onSubmit={handleSubmit}>
                                 
                                 <div className='booking-form'>
                                     <label>Booking Date:</label>

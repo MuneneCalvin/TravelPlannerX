@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Hotels.css';
 
-const DestinationsList = () => {
+const Hotel = () => {
   const navigate = useNavigate();
   const [hotels, setHotels] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -61,7 +61,7 @@ const DestinationsList = () => {
   );
 }
 
-export default DestinationsList;
+export default Hotel;
 
 
 
