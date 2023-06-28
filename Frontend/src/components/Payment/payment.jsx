@@ -76,7 +76,7 @@ function payment() {
       </div>
       <div className="input_container">
         <label htmlFor="password_field" className="input_label">Card Number</label>
-        <input id="password_field" className="input_field" type="number" name="input-name" title="Inpit title" placeholder="0000 0000 0000 0000" required/>
+        <input id="password_field" className="input_field" type="number" name="input-name" title="Inpit title" placeholder="0000 0000 0000 0000" required />
       </div>
       <div className="input_container">
         <label htmlFor="password_field" className="input_label">Expiry Date / CVV</label>
