@@ -8,7 +8,7 @@ const DestinationsList = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('http://localhost:8080/destinations')
+    fetch('http://localhost:8081/destinations')
       .then((response) => response.json())
       .then((data) => {
         setDestinations(data);

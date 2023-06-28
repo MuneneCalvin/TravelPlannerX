@@ -9,7 +9,7 @@ function Flights() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch('http://localhost:8080/flights')
+    fetch('http://localhost:8081/flights')
       .then(response => response.json())
       .then(data => {
         setFlights(data);

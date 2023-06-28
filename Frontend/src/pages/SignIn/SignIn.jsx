@@ -22,7 +22,7 @@ export default function Login() {
 
     const onSubmit = (data) => {
         setIsLoading(true);
-        Axios.post('http://localhost:8080/register', data)
+        Axios.post('http://localhost:8081/register', data)
         .then((response) => {
             setIsLoading(false);
             response.data.message && alert(response.data.message);

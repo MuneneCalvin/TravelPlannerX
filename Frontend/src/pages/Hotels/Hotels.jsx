@@ -8,7 +8,7 @@ const Hotel = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('http://localhost:8080/hotels')
+    fetch('http://localhost:8081/hotels')
       .then((response) => response.json())
       .then((data) => {
         setHotels(data);

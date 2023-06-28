@@ -23,7 +23,7 @@ function Booking() {
     const [formData, setFormData] = useState({ UserId: user.id, BookingDate: '', check_in_date: '', check_out_date: '', FlightId: '', AccId: '', total_price: '', status: '' });
 
     useEffect(() => {
-            fetch(`http://localhost:8080/bookings/${user.id}`)
+            fetch(`http://localhost:8081/bookings/${user.id}`)
             .then((response) => response.json())
             .then((data) => {
                 setBooking(data);
@@ -36,7 +36,7 @@ function Booking() {
     }, [user]);
 
     const handleDelete = (bookingId) => {
-        fetch(`http://localhost:8080/booking/${bookingId}`, {
+        fetch(`http://localhost:8081/booking/${bookingId}`, {
             method: 'DELETE',
         })
             .then((response) => {
@@ -86,7 +86,7 @@ function Booking() {
     const handleSubmit = (event) => {
         event.preventDefault();
         
-        fetch(`http://localhost:8080/bookings/${user.id}`, {
+        fetch(`http://localhost:8081/bookings/${user.id}`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(formData),
