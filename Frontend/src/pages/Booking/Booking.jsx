@@ -43,6 +43,7 @@ function Booking() {
                 if (response.ok) {
                     console.log(`Booking with ID: ${bookingId} deleted`);
                     alert("Booking Deleted Successfully");
+                    window.location.reload();  // page reloader
                 } else {
                     console.error('Error:', response);
                     alert("Booking Not Deleted");
