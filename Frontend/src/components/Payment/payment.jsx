@@ -1,8 +1,12 @@
+import { useNavigate } from 'react-router-dom';
 import './payment.css'
 
 function payment() {
+  const navigate = useNavigate();
+
   const sendConfirmationEmail = () => {
     alert('Payment has been successful.! Thankyou.');
+    navigate('/Booking');
   };
 
     return (
