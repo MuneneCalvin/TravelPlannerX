@@ -8,6 +8,7 @@ import cors from "cors";
 
 const app = express();
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(cors());
 
 // Middleware
@@ -42,6 +43,6 @@ app.get ("/", (req, res) => {
     res.send("Hello there, welcome to my Monthly project!!!!");
 });
 
-app.listen(config.port, () => {
-    console.log(`Server is running on ${config.url}`);
+app.listen(config.port || 5000, () => {
+    console.log("Server is running on");
 });
