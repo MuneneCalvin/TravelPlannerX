@@ -45,7 +45,7 @@ function Home() {
                         <input type = "text" className = "form-control" placeholder="Destination name" />
                         <input type="date" className = "form-control" placeholder="Date" />
                         <input type="number" className = "form-control" placeholder="Price ($)" />
-                        <input type="submit" className = "btn" value = "Search" />
+                        <input type="submit" className = "btn" onClick={handleSearch} value = "Search" />
                     </form>
                 </div>
             </div>
