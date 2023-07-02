@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import brazil from '../../assets/featured-reo-de-janeiro-brazil.jpg';
 import australia from '../../assets/featured-north-bondi-australia.jpg';
 import germany from '../../assets/featured-berlin-germany.jpg';
@@ -10,6 +11,7 @@ import video from '../../assets/video-section.mp4';
 import './Home.css'
 
 function Home() {
+    const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
@@ -19,6 +21,12 @@ function Home() {
     
         return () => clearTimeout(timeout);
     }, []);
+
+    const handleSearch = (event) => {
+        event.preventDefault();
+        navigate("/login")
+        alert('Please login to continue.');
+    }
 
     return (
         <main>
@@ -41,11 +49,11 @@ function Home() {
                 </div>
                 <div className = "header-form">
                     <h2>Choose your Travel location:</h2>
-                    <form className = "flex">
+                    <form className = "flex" onSubmit={handleSearch}>
                         <input type = "text" className = "form-control" placeholder="Destination name" />
                         <input type="date" className = "form-control" placeholder="Date" />
                         <input type="number" className = "form-control" placeholder="Price ($)" />
-                        <input type="submit" className = "btn" onClick={handleSearch} value = "Search" />
+                        <input type="submit" className = "btn" value = "Search" />
                     </form>
                 </div>
             </div>
